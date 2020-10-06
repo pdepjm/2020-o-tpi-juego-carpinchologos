@@ -1,14 +1,10 @@
 import wollok.game.*
 
-class Carpincho {
+object carpincho {
 
-	method position() {
-		return game.at(7,5)
-	}
+	method position() = game.at(7,5)
 
-	method image() {
-		return "carpincho.jpg"
-	}
+	method image() = "carpincho.jpg"	
 	
 }
 

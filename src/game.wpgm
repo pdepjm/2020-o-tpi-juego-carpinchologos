@@ -3,6 +3,7 @@ import wollok.game.*
 
 program carpinchologos{
 	juego.iniciar()
+	game.start()
 }
 
 

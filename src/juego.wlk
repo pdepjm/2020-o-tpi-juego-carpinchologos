@@ -15,7 +15,7 @@ object juego {
 		game.height(10)
 	}
     method agregarPersonajes() {
-    	const carpincho = new Carpincho()
+    	//const carpincho = new Carpincho()
 		game.addVisual(carpincho)
 		
 	}
