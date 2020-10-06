@@ -1,9 +1,14 @@
 import wollok.game.*
 
 class Carpincho {
+	var posicion = game.at(22,5)
 
 	method position() {
-		return game.at(7,5)
+		return posicion
+	}
+	
+	method mover(unaPosicion){
+		posicion = unaPosicion
 	}
 
 	method image() {
