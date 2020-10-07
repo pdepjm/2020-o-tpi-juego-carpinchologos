@@ -2,14 +2,14 @@ import wollok.game.*
 
 class Carpincho {
 
-	var posicion = game.at(22,5)
+	var posicion = game.at(20,6)
 
 	method position() = posicion
 
 	method mover(unaPosicion){
 		posicion = unaPosicion
 	}
-	method image() = "carpincho.jpg"
+	method image() = "carpincho.png"
 	
 }
 
