@@ -2,14 +2,27 @@ import wollok.game.*
 
 class Carpincho {
 
-	var posicion = game.at(20,6)
+	var posicion = game.at(10,10)
 
 	method position() = posicion
 
-	method mover(unaPosicion){
+	method aparecer(x, y) {
+		posicion = game.at(x,y)
+	}
+		
+	method moverseA(unaPosicion){
 		posicion = unaPosicion
 	}
 	method image() = "carpincho.png"
+
+	method avanzarLineaRecta() {
+		self.moverseA(self.position().right(1))
+	}
+
+	method avanzarAutomaticamente() {
+		game.onTick(1000, "carpicnchoSeMueve", { =>  self.avanzarLineaRecta() self.position()})
+	}
+	
 	
 }
 

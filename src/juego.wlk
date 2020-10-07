@@ -20,11 +20,12 @@ object juego {
     method agregarPersonajes() {
     	const carpincho1 = new Carpincho()
     	const carpincho2 = new Carpincho()
-    	carpincho2.mover(game.at(5, 0))
 		game.addVisual(carpincho1)
 		game.addVisual(carpincho2)
 		game.addVisual(personaje)
 		game.addVisual(zanahoria)
+		carpincho2.aparecer(0,10)
+		carpincho1.aparecer(0,0)
 	}
 	method configurarTeclas() {
 		keyboard.up().onPressDo({ personaje.moverseA(personaje.position().up(1))})
