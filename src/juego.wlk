@@ -14,7 +14,7 @@ object juego {
     method configurarJuego() {
 		game.title("Carpinchologos")
 		game.width(30)
-		game.height(18)
+		game.height(20)
 		game.boardGround("pasto.jpg")
 	}
     method agregarPersonajes() {
