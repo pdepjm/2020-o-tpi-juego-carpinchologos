@@ -1,6 +1,7 @@
 import wollok.game.*
 import personaje.*
 import carpincho.*
+import necesidades.*
 
 object juego {
 
@@ -23,7 +24,7 @@ object juego {
 		game.addVisual(carpincho1)
 		game.addVisual(carpincho2)
 		game.addVisual(personaje)
-		
+		game.addVisual(zanahoria)
 	}
 	method configurarTeclas() {
 		keyboard.up().onPressDo({ personaje.moverseA(personaje.position().up(1))})
