@@ -28,16 +28,16 @@ class Carpincho {
 
 	}
 
+	method estaSatisfecho() {
+		//desaparece el carpincho 
+	}
+
 
 
 
 
 	
 }
-
-
-
-
 
 /*Juego:
 Cosas a definir: ¿Como ganaria el jugador?
