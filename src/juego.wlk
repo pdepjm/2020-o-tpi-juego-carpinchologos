@@ -9,6 +9,8 @@ object juego {
         self.configurarJuego()
         self.agregarPersonajes()
         self.configurarTeclas()
+		self.generarCarpinchos()
+        game.start()
     }
 
     method configurarJuego() {
@@ -18,14 +20,11 @@ object juego {
 		game.boardGround("pasto.jpg")
 	}
     method agregarPersonajes() {
-    	const carpincho1 = new Carpincho()
-    	const carpincho2 = new Carpincho()
-		game.addVisual(carpincho1)
-		game.addVisual(carpincho2)
+    	
 		game.addVisual(personaje)
 		game.addVisual(zanahoria)
-		carpincho2.aparecer(0,10)
-		carpincho1.aparecer(0,0)
+		/*carpincho2.aparecer(0,10)
+		carpincho1.aparecer(0,0)*/
 	}
 	method configurarTeclas() {
 		keyboard.up().onPressDo({ personaje.moverseA(personaje.position().up(1))})
@@ -33,4 +32,18 @@ object juego {
 		keyboard.left().onPressDo({ personaje.moverseA(personaje.position().left(1))})
 		keyboard.right().onPressDo({ personaje.moverseA(personaje.position().right(1))})
 	}
-}
+
+	method generarCarpinchos(){
+		//on tick -> genere un carpincho hasta que el jugador gane o pierda
+		game.onTick(1000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+	}
+
+	method generarUnCarpinchoYMoverEnLineaRecta() {
+		const carpincho = new Carpincho()
+		game.addVisual(carpincho)
+		carpincho.aparecerEnBorde()
+		carpincho.avanzarAutomaticamente()
+	}
+} 
+
+

@@ -1,30 +1,39 @@
 import wollok.game.*
+import movimientos.*
 
 class Carpincho {
 
-	var posicion = game.at(10,10)
+	// var movimiento = lineaRecta
 
-	method position() = posicion
+	var posicion = game.at(10,10) // lo pusimos asi para q no nos tire problema con la generacion del carpincho 
+	
+	method position() = posicion 
 
-	method aparecer(x, y) {
-		posicion = game.at(x,y)
-	}
-		
-	method moverseA(unaPosicion){
-		posicion = unaPosicion
-	}
 	method image() = "carpincho.png"
 
-	method avanzarLineaRecta() {
-		self.moverseA(self.position().right(1))
+	method avanzarAutomaticamente() {
+		game.onTick(50, "carpincho avanza", { =>  self.avanzarLineaRecta()})
 	}
 
-	method avanzarAutomaticamente() {
-		game.onTick(1000, "carpicnchoSeMueve", { =>  self.avanzarLineaRecta() self.position()})
+	method avanzarLineaRecta() {
+		posicion = self.position().left(1)
 	}
-	
+
+	method aparecerEnBorde(){
+
+		const y = 0.randomUpTo(game.height())
+		posicion = game.at(20, y)
+
+	}
+
+
+
+
+
 	
 }
+
+
 
 
 
