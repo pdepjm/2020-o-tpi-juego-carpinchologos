@@ -5,7 +5,9 @@ class Carpincho {
 
 	// var movimiento = lineaRecta
 
-	var posicion = game.at(10,10) // lo pusimos asi para q no nos tire problema con la generacion del carpincho 
+	var posicion = game.at(10,10) // lo pusimos asi para q no nos tire problema con la generacion del carpincho
+	
+	var necesidad = #{} // maximo de 2
 	
 	method position() = posicion 
 

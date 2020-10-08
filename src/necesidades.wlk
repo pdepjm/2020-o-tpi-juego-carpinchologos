@@ -8,3 +8,4 @@ object zanahoria {
 
 	method image() = "zanahoria.png"
 }
+
