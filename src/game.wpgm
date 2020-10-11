@@ -4,4 +4,3 @@ program carpinchologos{
 	juego.iniciar()
 }
 
-

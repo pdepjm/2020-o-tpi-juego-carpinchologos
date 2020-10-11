@@ -14,7 +14,7 @@ class Carpincho {
 	method image() = "carpincho.png"
 
 	method avanzarAutomaticamente() {
-		game.onTick(5000, "carpincho avanza", { =>  self.avanzarLineaRecta()})
+		game.onTick(500, "carpincho avanza", { =>  self.avanzarLineaRecta()})
 	}
 
 	method avanzarLineaRecta() {
@@ -23,8 +23,8 @@ class Carpincho {
 
 	method aparecerEnBorde(){
 
-		const y = 0.randomUpTo(game.height())
-		posicion = game.at(20, y)
+		const y = 4.randomUpTo(game.height() - 4)
+		posicion = game.at(30, y)
 	}
 
 	method estaSatisfecho() {

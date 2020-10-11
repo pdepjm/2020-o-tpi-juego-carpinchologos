@@ -8,8 +8,10 @@ object juego {
     method iniciar(){
         self.configurarJuego()
         self.agregarPersonajes()
+        self.agregarElementos()
         self.configurarTeclas()
 		self.generarCarpinchos()
+		self.configurarAcciones()
         game.start()
     }
 
@@ -23,9 +25,12 @@ object juego {
     method agregarPersonajes() {
     	
 		game.addVisual(personaje)
-		game.addVisual(zanahoria)
 		/*carpincho2.aparecer(0,10)
 		carpincho1.aparecer(0,0)*/
+	}
+
+	method agregarElementos() {
+		game.addVisual(zanahoria)
 	}
 	method configurarTeclas() {
 		keyboard.up().onPressDo({ personaje.moverseA(personaje.position().up(1))})
@@ -36,7 +41,7 @@ object juego {
 
 	method generarCarpinchos(){
 		//on tick -> genere un carpincho hasta que el jugador gane o pierda
-		game.onTick(1000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+		game.onTick(5000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {
@@ -45,6 +50,13 @@ object juego {
 		carpincho.aparecerEnBorde()
 		carpincho.avanzarAutomaticamente()
 	}
+	
+	method configurarAcciones() {
+		game.onCollideDo(personaje, { visualColisionado => visualColisionado.atrapado()})
+	}
+	
 } 
+
+
 
 
