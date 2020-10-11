@@ -14,10 +14,11 @@ object juego {
     }
 
     method configurarJuego() {
+		game.cellSize(64)
 		game.title("Carpinchologos")
 		game.width(30)
 		game.height(20)
-		game.boardGround("pasto.jpg")
+		game.boardGround("fondo.png")
 	}
     method agregarPersonajes() {
     	

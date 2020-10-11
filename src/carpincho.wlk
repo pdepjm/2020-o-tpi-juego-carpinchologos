@@ -14,7 +14,7 @@ class Carpincho {
 	method image() = "carpincho.png"
 
 	method avanzarAutomaticamente() {
-		game.onTick(50, "carpincho avanza", { =>  self.avanzarLineaRecta()})
+		game.onTick(5000, "carpincho avanza", { =>  self.avanzarLineaRecta()})
 	}
 
 	method avanzarLineaRecta() {
@@ -25,16 +25,11 @@ class Carpincho {
 
 		const y = 0.randomUpTo(game.height())
 		posicion = game.at(20, y)
-
 	}
 
 	method estaSatisfecho() {
 		//desaparece el carpincho 
 	}
-
-
-
-
 
 	
 }
