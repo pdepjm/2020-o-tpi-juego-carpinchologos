@@ -1,24 +1,50 @@
 import wollok.game.*
 
 object lago {
-	const lago = #{}
-	method posicionesLago() = lago
+	const superficiesDeAgua = #{}
 	
-	method agregarAgua(unaPosicion){
-		const agua = new Agua(posicion = unaPosicion) 
-		lago.add(agua.position())
+	method superficiesDeAgua() = superficiesDeAgua
+	
+	//method posicionesLago() = lago
+	
+	
+	method agregarAgua(unaPosicion, unaImagen){
+		const agua = new Agua(imagen = unaImagen, posicion = unaPosicion)
+		superficiesDeAgua.add(agua/* .position()*/)
+		game.addVisual(agua)
+	}
+	
+	method generarBordeSuperior() {
+		self.agregarAgua(game.at(0,19), "lagoSuperior.png")
+	}
+	
+	method generarBordeInferior() {
+		self.agregarAgua(game.at(0,0), "lagoInferior.png")
 	}
 
-	method generarEnPosicion(posicionDeY){
-		self.agregarAgua(game.at(0, posicionDeY))
+	method generarBordeIntermedio(posicionDeY){
+		self.agregarAgua(game.at(0, posicionDeY), "lagoMedio.png")
 	}
 	
-	method image() = "zanahoria.png"
+	//method image() = "zanahoria.png"
 	
-	method position(){}
+	//method position(){}
+	
+	
 }
 
 class Agua{
 	var posicion	
+	var imagen
+	
 	method position() = posicion
+	
+	method image() = imagen
+	
+	method atrapado() {
+		
+	}
+	method hacerAlgo() {
+		game.stop()
+	}
 }

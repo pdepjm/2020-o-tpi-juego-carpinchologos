@@ -5,7 +5,9 @@ import necesidades.*
 import lago.*
 
 object juego {
-
+	
+	const property carpinchos = []
+	
     method iniciar(){
         self.configurarJuego()
         self.agregarPersonajes()
@@ -22,7 +24,7 @@ object juego {
 		game.title("Carpinchologos")
 		game.width(30)
 		game.height(20)
-		game.boardGround("fondo.png")
+		game.boardGround("prueba.png")
 	}
     method agregarPersonajes() {
     	
@@ -43,32 +45,39 @@ object juego {
 
 	method generarCarpinchos(){
 		//on tick -> genere un carpincho hasta que el jugador gane o pierda
-		game.onTick(5000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+		game.onTick(500, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {
 		const carpincho = new Carpincho()
+		carpinchos.add(carpincho)
 		game.addVisual(carpincho)
 		carpincho.aparecerEnBorde()
 		carpincho.avanzarAutomaticamente()
+		game.onCollideDo(carpincho, {unaSupDeAgua => unaSupDeAgua.hacerAlgo()})
 	}
 	
 	method generarSuperficieDeAgua(){		
-		20.times({ i => lago.generarEnPosicion(i-1)})
+		lago.generarBordeSuperior()
+		18.times({ i => lago.generarBordeIntermedio(i)})
+		lago.generarBordeInferior()
 	}
 	
 	method configurarAcciones(){
 
 		game.onCollideDo(personaje, {visualColisionado => visualColisionado.atrapado()})
-		game.onCollideDo(lago, {carpincho => carpincho.pisaAgua()})
+		//game.onCollideDo(carpincho, {carpincho => carpincho.carpinchoPisaLago()})
 		//self.carpinchoPisaLago()
 	}
 
 	/*method carpinchoPisaLago(){
-		if(posCarpincho == posicionDeUnaSupDeAgua){
-			temrinarJuego
+		if(self.algunCarpinchoTocaElAgua()){
+			game.stop()
 		}
-	}*/
+	}
+	
+	method algunCarpinchoTocaElAgua() = carpinchos.any({carpincho => carpincho.tocaSuperficieDeAgua()})*/
+	
 	
 } 
 

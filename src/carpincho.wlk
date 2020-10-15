@@ -1,5 +1,7 @@
 import wollok.game.*
 import movimientos.*
+import lago.*
+import juego.*
 
 class Carpincho {
 
@@ -33,7 +35,20 @@ class Carpincho {
 	method pisaAgua() {
 		imagen = "carpinchoEnojado.jpg"
 	}
-
+	
+	method tocaSuperficieDeAgua() = lago.superficiesDeAgua().any({superficie => self.position() == superficie.position()})
+	
+	method atrapado() {
+		
+	}
+	
+	method carpinchoPisaLago(){
+		if(self.algunCarpinchoTocaElAgua()){
+			game.stop()
+		}
+	}
+	
+	method algunCarpinchoTocaElAgua() = juego.carpinchos().any({carpincho => carpincho.tocaSuperficieDeAgua()})
 	
 }
 
