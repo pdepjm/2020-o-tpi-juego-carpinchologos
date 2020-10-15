@@ -44,7 +44,7 @@ class Agua{
 	method atrapado() {
 		
 	}
-	method hacerAlgo() {
+	method colisionDeCarpinchoConObjeto() {
 		game.stop()
 	}
 }

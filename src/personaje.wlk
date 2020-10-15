@@ -25,7 +25,11 @@ object personaje {
 
 	// El conjunto puede teneer hasta 3 elementos
 	method pocosElementos() = elementosAgarrados.size() < 4
-
+	
+	method colisionDeCarpinchoConObjeto() {
+		// Necesario para que no tire mensaje de error (unc arpincho choca con un personaje)
+		// Acá la interacción implica ver el tema de la satisfacción de necesidades
+	}
 	
 
 }

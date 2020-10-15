@@ -6,15 +6,15 @@ import lago.*
 
 object juego {
 	
-	const property carpinchos = []
+	//const property carpinchos = []
 	
     method iniciar(){
         self.configurarJuego()
-        self.agregarPersonajes()
+        self.generarSuperficieDeAgua()
         self.agregarElementos()
         self.configurarTeclas()
 		self.generarCarpinchos()
-		self.generarSuperficieDeAgua()
+		self.agregarPersonajes()
 		self.configurarAcciones()
         game.start()
     }
@@ -24,7 +24,7 @@ object juego {
 		game.title("Carpinchologos")
 		game.width(30)
 		game.height(20)
-		game.boardGround("prueba.png")
+		game.boardGround("fondo.png")
 	}
     method agregarPersonajes() {
     	
@@ -45,16 +45,19 @@ object juego {
 
 	method generarCarpinchos(){
 		//on tick -> genere un carpincho hasta que el jugador gane o pierda
-		game.onTick(500, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+		game.onTick(100, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {
 		const carpincho = new Carpincho()
-		carpinchos.add(carpincho)
+		//carpinchos.add(carpincho)
 		game.addVisual(carpincho)
 		carpincho.aparecerEnBorde()
 		carpincho.avanzarAutomaticamente()
-		game.onCollideDo(carpincho, {unaSupDeAgua => unaSupDeAgua.hacerAlgo()})
+		game.onCollideDo(carpincho, {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
+		// Cuando se le satisface una necesidad, la repsonsabildiad de eliminarse sería del propio carpincho (removeVisual)
+		carpincho.borrarse()
+		//carpincho = null
 	}
 	
 	method generarSuperficieDeAgua(){		

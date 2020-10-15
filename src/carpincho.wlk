@@ -16,7 +16,7 @@ class Carpincho {
 	method image() = imagen
 
 	method avanzarAutomaticamente() {
-		game.onTick(500, "carpincho avanza", { =>  self.avanzarLineaRecta()})
+		game.onTick(1000, "carpincho avanza", { =>  self.avanzarLineaRecta()})
 	}
 
 	method avanzarLineaRecta() {
@@ -42,13 +42,23 @@ class Carpincho {
 		
 	}
 	
-	method carpinchoPisaLago(){
+	/*method carpinchoPisaLago(){
 		if(self.algunCarpinchoTocaElAgua()){
 			game.stop()
 		}
 	}
 	
-	method algunCarpinchoTocaElAgua() = juego.carpinchos().any({carpincho => carpincho.tocaSuperficieDeAgua()})
+	method algunCarpinchoTocaElAgua() = juego.carpinchos().any({carpincho => carpincho.tocaSuperficieDeAgua()})*/
+	
+	method colisionDeCarpinchoConObjeto() {
+		// Necesario para que no tire mensaje de error (un carpincho choca con otro carpincho, aunque no sería necesario, pues se generan en distintos tiempos y posiciones, pero Wollok lo pide)
+		
+	}
+	
+	method borrarse() {
+		game.schedule(5000, { =>  game.removeVisual(self)}) // Queda ver cómo eliminar la referencia apra evitar un memory leak, ya que removeVisual sólo elimina la representación gráfica del objeto
+	}
+	
 	
 }
 
