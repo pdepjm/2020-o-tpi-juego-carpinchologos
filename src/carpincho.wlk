@@ -3,15 +3,15 @@ import movimientos.*
 
 class Carpincho {
 
-	// var movimiento = lineaRecta
+	var imagen = "carpincho.png"
 
 	var posicion = game.at(10,10) // lo pusimos asi para q no nos tire problema con la generacion del carpincho
 	
-	var necesidad = #{} // maximo de 2
+	const necesidad = #{} // maximo de 2
 	
 	method position() = posicion 
 
-	method image() = "carpincho.png"
+	method image() = imagen
 
 	method avanzarAutomaticamente() {
 		game.onTick(500, "carpincho avanza", { =>  self.avanzarLineaRecta()})
@@ -22,13 +22,16 @@ class Carpincho {
 	}
 
 	method aparecerEnBorde(){
-
 		const y = 4.randomUpTo(game.height() - 4)
 		posicion = game.at(30, y)
 	}
 
 	method estaSatisfecho() {
 		//desaparece el carpincho 
+	}
+
+	method pisaAgua() {
+		imagen = "carpinchoEnojado.jpg"
 	}
 
 	

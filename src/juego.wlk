@@ -2,6 +2,7 @@ import wollok.game.*
 import personaje.*
 import carpincho.*
 import necesidades.*
+import lago.*
 
 object juego {
 
@@ -11,6 +12,7 @@ object juego {
         self.agregarElementos()
         self.configurarTeclas()
 		self.generarCarpinchos()
+		self.generarSuperficieDeAgua()
 		self.configurarAcciones()
         game.start()
     }
@@ -51,9 +53,22 @@ object juego {
 		carpincho.avanzarAutomaticamente()
 	}
 	
-	method configurarAcciones() {
-		game.onCollideDo(personaje, { visualColisionado => visualColisionado.atrapado()})
+	method generarSuperficieDeAgua(){		
+		20.times({ i => lago.generarEnPosicion(i-1)})
 	}
+	
+	method configurarAcciones(){
+
+		game.onCollideDo(personaje, {visualColisionado => visualColisionado.atrapado()})
+		game.onCollideDo(lago, {carpincho => carpincho.pisaAgua()})
+		//self.carpinchoPisaLago()
+	}
+
+	/*method carpinchoPisaLago(){
+		if(posCarpincho == posicionDeUnaSupDeAgua){
+			temrinarJuego
+		}
+	}*/
 	
 } 
 
