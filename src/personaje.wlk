@@ -7,7 +7,8 @@ object personaje {
 
 	var position = game.at(3,6)
 
-	var elementosAgarrados = #{}
+	const elementosAgarrados = #{}
+
 
 	method elementosAgarrados() = elementosAgarrados
 	
@@ -19,24 +20,20 @@ object personaje {
 		position = unaPosicion
 	}
 	
-	/*method agarrarElemento(){
-		if (self.pocosElementos()) {
-			elementosAgarrados.add(visualColisionado)})
-		} 
-		else {
-			game.say(self, "Ya tengo muchos elementos!")
-		} 
-	}*/
-
-	// El conjunto puede teneer hasta 3 elementos
-	method pocosElementos() = elementosAgarrados.size() < 4
+	// El conjunto puede tener hasta 3 elementos
+	method pocosElementos() = elementosAgarrados.size() < 2
+	
+	method agarrarElemento(unElemento){
+		if (self.pocosElementos()) elementosAgarrados.add(unElemento)
+		else game.say(self, "Ya tengo muchos elementos!")
+	}
 	
 	method colisionDeCarpinchoConObjeto() {
 		// Necesario para que no tire mensaje de error (unc arpincho choca con un personaje)
 		// Acá la interacción implica ver el tema de la satisfacción de necesidades
 	}
 
-	method interaccionConElPersonaje() {} // para que no rompa el onCollide 
+	method interaccionConElPersonaje() {}
 
 	method elementosDelPersonajeQueSatisfacenAlCarpincho(carpincho){
 		//algun objeto de la lista de lista de elem agarrados satisface alguna de las necesidades del carpcinho
@@ -44,7 +41,6 @@ object personaje {
 		const property objetosNecesarios = carpincho.necesidades().map({x=>x.objetoNecesario()})
 		const elementosEnComun = self.elementosAgarrados().intersection(objetosNecesarios)	
 		return elementosEnComun
-		
 	}
 
 	method tieneAlgoQueSatisface(carpincho) = not (self.elementosDelPersonajeQueSatisfacenAlCarpincho(carpincho).isEmpty())

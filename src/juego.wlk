@@ -3,6 +3,7 @@ import personaje.*
 import carpincho.*
 import necesidades.*
 import lago.*
+import objetosQueSatisfacen.*
 
 object juego {
 	
@@ -27,15 +28,14 @@ object juego {
 		game.boardGround("fondo.png")
 	}
     method agregarPersonajes() {
-    	
 		game.addVisual(personaje)
-		/*carpincho2.aparecer(0,10)
-		carpincho1.aparecer(0,0)*/
 	}
 
 	method agregarElementos() {
 		game.addVisual(zanahoria)
+		game.addVisual(manzana)
 	}
+	
 	method configurarTeclas() {
 		keyboard.up().onPressDo({ personaje.moverseA(personaje.position().up(1))})
 		keyboard.down().onPressDo({ personaje.moverseA(personaje.position().down(1))})
@@ -50,13 +50,13 @@ object juego {
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {
 		const carpincho = new Carpincho()
-		//carpinchos.add(carpincho)
+		//carpinchos.add(new Carpincho()) 
 		game.addVisual(carpincho)
 		carpincho.aparecerEnBorde()
 		carpincho.avanzarAutomaticamente()
 		game.onCollideDo(carpincho, {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
 		// Cuando se le satisface una necesidad, la repsonsabildiad de eliminarse sería del propio carpincho (removeVisual)
-		//carpincho.borrarse() -> aca hay que agregar que se borre cuando queda satisfecho
+		carpincho.borrarse() //-> aca hay que agregar que se borre cuando queda satisfecho
 		//carpincho = null
 	}
 	
@@ -67,11 +67,11 @@ object juego {
 	}
 	
 	method configurarAcciones(){
-		
 		game.onCollideDo(personaje, {algo => algo.interaccionConElPersonaje(personaje)})
 		//game.onCollideDo(carpincho, {carpincho => carpincho.carpinchoPisaLago()})
 		//self.carpinchoPisaLago()
 	}
+	
 
 	/*method carpinchoPisaLago(){
 		if(self.algunCarpinchoTocaElAgua()){

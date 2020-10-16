@@ -1,20 +1,9 @@
 import wollok.game.*
-import personaje.*
-
 
 class Elemento{
-	
-	//var estado = libre
-	
-	
-	method atrapado(){
-		//estado = atrapado
-		
-	}
 
-	method interaccionConElPersonaje(){
-		// transladarse abajo -> visual
-
+	method interaccionConElPersonaje(unPersonaje){
+		unPersonaje.agarrarElemento(self)
 	}	
 	
 	method image()
@@ -22,17 +11,13 @@ class Elemento{
 
 object zanahoria inherits Elemento {
 
-	method position() = game.at(12,19)
+	method position() = game.at(12,10)
 	
  	override method image() = "zanahoria.png"
 }
+object manzana inherits Elemento {
 
-/*
-object libre {
-	method posicion() = game.at(12,19)
+	method position() = game.at(13,10)
+	
+ 	override method image() = "manzana.png"
 }
-
-object atrapado {
-	method posicion() = personaje.position().right(1)
-} */
-

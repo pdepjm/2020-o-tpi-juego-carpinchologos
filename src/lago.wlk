@@ -24,13 +24,7 @@ object lago {
 
 	method generarBordeIntermedio(posicionDeY){
 		self.agregarAgua(game.at(0, posicionDeY), "lagoMedio.png")
-	}
-	
-	//method image() = "zanahoria.png"
-	
-	//method position(){}
-	
-	
+	}	
 }
 
 class Agua{
