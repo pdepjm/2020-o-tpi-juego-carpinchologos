@@ -2,6 +2,7 @@ import wollok.game.*
 import movimientos.*
 import lago.*
 import juego.*
+import personaje.*
 
 class Carpincho {
 
@@ -9,7 +10,9 @@ class Carpincho {
 
 	var posicion = game.at(10,10) // lo pusimos asi para q no nos tire problema con la generacion del carpincho
 	
-	const necesidad = #{} // maximo de 2
+	const necesidades = #{hambriento} // maximo de 2
+
+	method necesidades() = necesidades
 	
 	method position() = posicion 
 
@@ -38,9 +41,7 @@ class Carpincho {
 	
 	method tocaSuperficieDeAgua() = lago.superficiesDeAgua().any({superficie => self.position() == superficie.position()})
 	
-	method atrapado() {
-		
-	}
+	method atrapado(){}
 	
 	/*method carpinchoPisaLago(){
 		if(self.algunCarpinchoTocaElAgua()){
@@ -50,14 +51,32 @@ class Carpincho {
 	
 	method algunCarpinchoTocaElAgua() = juego.carpinchos().any({carpincho => carpincho.tocaSuperficieDeAgua()})*/
 	
-	method colisionDeCarpinchoConObjeto() {
-		// Necesario para que no tire mensaje de error (un carpincho choca con otro carpincho, aunque no sería necesario, pues se generan en distintos tiempos y posiciones, pero Wollok lo pide)
-		
-	}
+	method colisionDeCarpinchoConObjeto(){// Necesario para que no tire mensaje de error (un carpincho choca con otro carpincho, aunque no sería necesario, pues se generan en distintos tiempos y posiciones, pero Wollok lo pide)}
 	
 	method borrarse() {
 		game.schedule(5000, { =>  game.removeVisual(self)}) // Queda ver cómo eliminar la referencia apra evitar un memory leak, ya que removeVisual sólo elimina la representación gráfica del objeto
 	}
+
+	method interaccionConElPersonaje(personaje){
+		// carpincho -> personaje
+		var elementoEnComun = personaje.elementosDelPersonajeQueSatisfacenAlCarpincho(carpincho) // segun el modelado actual (correspondencia uno a uno entre necesidades y elementos que las satisfacen) este elemento puede ser uno solo
+		if(not elementoEnComun.isEmpty()){
+		// darle la frutita implica : carpincho eliminar la necesidad
+    	//					 		  personaje eliminar objeto de la lista bolsita
+		//							  frutita eliminar el objeto de la pantalla
+
+	} //falta completar a futuro porque ahora solo lo estamos haciendo con una unica necesidad (posiblemente, ampliemos
+	la cantidad de necesidades - ver)
+
+	}
+
+
+	
+
+}
+
+
+
 	
 	
 }

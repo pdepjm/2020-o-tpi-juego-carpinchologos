@@ -1,30 +1,15 @@
-import wollok.game.*
-import personaje.*
+import objetosQueSatisfacen.*
+
+class Necesidad {
 
 
-class Elemento {
-	
-	var estado = libre
-	
-	method position() = estado.posicion()
-	
-	method atrapado() {
-		estado = atrapado
-	}
-	
-	method image()
 }
 
-object zanahoria inherits Elemento {
+object hambriento inherits Necesidad {
+	method objetoNecesario() = zanahoria
 	
- 	override method image() = "zanahoria.png"
 }
 
+object otraNecesidad inherits Necesidad {
 
-object libre {
-	method posicion() = game.at(12,19)
-}
-
-object atrapado {
-	method posicion() = personaje.position().right(1)
 }

@@ -56,7 +56,7 @@ object juego {
 		carpincho.avanzarAutomaticamente()
 		game.onCollideDo(carpincho, {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
 		// Cuando se le satisface una necesidad, la repsonsabildiad de eliminarse sería del propio carpincho (removeVisual)
-		carpincho.borrarse()
+		//carpincho.borrarse() -> aca hay que agregar que se borre cuando queda satisfecho
 		//carpincho = null
 	}
 	
@@ -67,8 +67,8 @@ object juego {
 	}
 	
 	method configurarAcciones(){
-
-		game.onCollideDo(personaje, {visualColisionado => visualColisionado.atrapado()})
+		
+		game.onCollideDo(personaje, {algo => algo.interaccionConElPersonaje(personaje)})
 		//game.onCollideDo(carpincho, {carpincho => carpincho.carpinchoPisaLago()})
 		//self.carpinchoPisaLago()
 	}
