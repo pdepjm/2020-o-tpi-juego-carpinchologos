@@ -70,11 +70,11 @@ class Carpincho {
 
 		} //falta completar a futuro porque ahora solo lo estamos haciendo con una unica necesidad (posiblemente, ampliemos la cantidad de necesidades - ver)
 	}
-
-
 	
 
 }
+
+
 
 /*Juego:
 Cosas a definir: ¿Como ganaria el jugador?

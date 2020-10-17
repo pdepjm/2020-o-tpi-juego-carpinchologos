@@ -7,7 +7,7 @@ import objetosQueSatisfacen.*
 
 object juego {
 	
-	//const property carpinchos = []
+	const property carpinchos = []
 	
     method iniciar(){
         self.configurarJuego()
@@ -49,14 +49,19 @@ object juego {
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {
-		const carpincho = new Carpincho()
-		//carpinchos.add(new Carpincho()) 
-		game.addVisual(carpincho)
-		carpincho.aparecerEnBorde()
-		carpincho.avanzarAutomaticamente()
-		game.onCollideDo(carpincho, {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
+		//const carpincho = new Carpincho()
+		carpinchos.add(new Carpincho()) 
+		//game.addVisual(carpincho)
+		game.addVisual(carpinchos.last())
+		//carpincho.aparecerEnBorde()
+		carpinchos.last().aparecerEnBorde()
+		//carpincho.avanzarAutomaticamente()
+		carpinchos.last().avanzarAutomaticamente()
+		//game.onCollideDo(carpincho, {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
+		game.onCollideDo(carpinchos.last(), {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()})
 		// Cuando se le satisface una necesidad, la repsonsabildiad de eliminarse sería del propio carpincho (removeVisual)
-		carpincho.borrarse() //-> aca hay que agregar que se borre cuando queda satisfecho
+		carpinchos.first().borrarse() //-> aca hay que agregar que se borre cuando queda satisfecho
+		carpinchos.remove(carpinchos.first())
 		//carpincho = null
 	}
 	

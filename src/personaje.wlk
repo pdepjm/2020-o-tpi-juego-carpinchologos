@@ -38,10 +38,11 @@ object personaje {
 	method elementosDelPersonajeQueSatisfacenAlCarpincho(carpincho){
 		//algun objeto de la lista de lista de elem agarrados satisface alguna de las necesidades del carpcinho
 		//la lista del carpincho	
-		const property objetosNecesarios = carpincho.necesidades().map({x=>x.objetoNecesario()})
+		const objetosNecesarios = carpincho.necesidades().map({x=>x.objetoNecesario()})
 		const elementosEnComun = self.elementosAgarrados().intersection(objetosNecesarios)	
 		return elementosEnComun
 	}
 
-	method tieneAlgoQueSatisface(carpincho) = not (self.elementosDelPersonajeQueSatisfacenAlCarpincho(carpincho).isEmpty())
+	//method tieneAlgoQueSatisface(carpincho) = not (self.elementosDelPersonajeQueSatisfacenAlCarpincho(carpincho).isEmpty())
 
+}

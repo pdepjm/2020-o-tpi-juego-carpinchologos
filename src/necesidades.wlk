@@ -2,7 +2,7 @@ import objetosQueSatisfacen.*
 
 class Necesidad {
 
-
+// Esto está por potenciales requerimientos
 }
 
 object hambriento inherits Necesidad {
