@@ -33,7 +33,7 @@ object juego {
 
 	method agregarElementos() {
 		game.addVisual(zanahoria)
-		game.addVisual(manzana)
+		game.addVisual(comidita)
 	}
 	
 	method configurarTeclas() {
@@ -45,24 +45,15 @@ object juego {
 
 	method generarCarpinchos(){
 		//on tick -> genere un carpincho hasta que el jugador gane o pierda
-		game.onTick(100, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+		game.onTick(1000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {
-		//const carpincho = new Carpincho()
-		carpinchos.add(new Carpincho()) 
-		//game.addVisual(carpincho)
-		game.addVisual(carpinchos.last())
-		//carpincho.aparecerEnBorde()
-		carpinchos.last().aparecerEnBorde()
-		//carpincho.avanzarAutomaticamente()
-		carpinchos.last().avanzarAutomaticamente()
-		//game.onCollideDo(carpincho, {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
-		game.onCollideDo(carpinchos.last(), {visualColisionado => visualColisionado.colisionDeCarpinchoConObjeto()})
-		// Cuando se le satisface una necesidad, la repsonsabildiad de eliminarse sería del propio carpincho (removeVisual)
-		carpinchos.first().borrarse() //-> aca hay que agregar que se borre cuando queda satisfecho
-		carpinchos.remove(carpinchos.first())
-		//carpincho = null
+		const carpincho = new Carpincho()
+		game.addVisual(carpincho)
+		carpincho.aparecerEnBorde()
+		carpincho.avanzarAutomaticamente()
+		game.onCollideDo(carpincho, {visualColisionado => visualColisionado.interaccionConCarpincho(carpincho)}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
 	}
 	
 	method generarSuperficieDeAgua(){		
@@ -72,20 +63,8 @@ object juego {
 	}
 	
 	method configurarAcciones(){
-		game.onCollideDo(personaje, {algo => algo.interaccionConElPersonaje(personaje)})
-		//game.onCollideDo(carpincho, {carpincho => carpincho.carpinchoPisaLago()})
-		//self.carpinchoPisaLago()
+		game.onCollideDo(personaje, {algo => algo.interaccionConPersonaje(personaje)})
 	}
-	
-
-	/*method carpinchoPisaLago(){
-		if(self.algunCarpinchoTocaElAgua()){
-			game.stop()
-		}
-	}
-	
-	method algunCarpinchoTocaElAgua() = carpinchos.any({carpincho => carpincho.tocaSuperficieDeAgua()})*/
-	
 	
 } 
 

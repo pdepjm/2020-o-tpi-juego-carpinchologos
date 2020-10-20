@@ -11,9 +11,11 @@ class Carpincho {
 
 	var posicion = game.at(10,10) // lo pusimos asi para q no nos tire problema con la generacion del carpincho
 	
-	const necesidades = #{hambriento} // maximo de 2
+	//const necesidades = #{hambriento} // maximo de 2
+	
+	const necesidad = hambriento
 
-	method necesidades() = necesidades
+	//method necesidades() = necesidades
 	
 	method position() = posicion 
 
@@ -32,33 +34,23 @@ class Carpincho {
 		posicion = game.at(30, y)
 	}
 
-	method estaSatisfecho() {
-		//desaparece el carpincho 
-	}
-
 	method pisaAgua() {
 		imagen = "carpinchoEnojado.jpg"
 	}
 	
-	method tocaSuperficieDeAgua() = lago.superficiesDeAgua().any({superficie => self.position() == superficie.position()})
-	
-	method atrapado(){}
-	
-	/*method carpinchoPisaLago(){
-		if(self.algunCarpinchoTocaElAgua()){
-			game.stop()
-		}
+	method interaccionConCarpincho(carpincho){
+		/* Necesario para que no tire mensaje de error (un carpincho choca con otro carpincho, aunque no sería necesario, pues se generan 
+		en distintos tiempos y posiciones, pero Wollok lo pide)*/
 	}
 	
-	method algunCarpinchoTocaElAgua() = juego.carpinchos().any({carpincho => carpincho.tocaSuperficieDeAgua()})*/
-	
-	method colisionDeCarpinchoConObjeto(){}// Necesario para que no tire mensaje de error (un carpincho choca con otro carpincho, aunque no sería necesario, pues se generan en distintos tiempos y posiciones, pero Wollok lo pide)
-	
-	method borrarse() {
-		game.schedule(5000, { =>  game.removeVisual(self)}) // Queda ver cómo eliminar la referencia apra evitar un memory leak, ya que removeVisual sólo elimina la representación gráfica del objeto
+	method desaparecer() {
+		game.removeTickEvent("carpincho avanza")
+        game.removeVisual(self)
 	}
+	
+	method necesidadSatisfecha(elementos) = elementos.contains(necesidad.objetoNecesario())
 
-	method interaccionConElPersonaje(unPersonaje){
+	method interaccionConPersonaje(unPersonaje){
 		var elementoEnComun = unPersonaje.elementosDelPersonajeQueSatisfacenAlCarpincho(self) 
 		// segun el modelado actual (correspondencia uno a uno entre necesidades y elementos que las satisfacen) 
 		//este elemento puede ser uno solo

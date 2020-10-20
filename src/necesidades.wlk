@@ -1,15 +1,11 @@
 import objetosQueSatisfacen.*
 
-class Necesidad {
-
-// Esto está por potenciales requerimientos
-}
-
-object hambriento inherits Necesidad {
+object hambriento {
 	method objetoNecesario() = zanahoria
 	
 }
 
-object otraNecesidad inherits Necesidad {
+object suenito {
+	method objetoNecesario() = comidita
 
 }

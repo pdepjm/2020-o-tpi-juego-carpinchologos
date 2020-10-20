@@ -1,23 +1,36 @@
 import wollok.game.*
 
-class Elemento{
+class Elemento {
+	
+	var property copiaDeElemento
+	
+	var image
+	
+	var position
 
 	method interaccionConElPersonaje(unPersonaje){
 		unPersonaje.agarrarElemento(self)
 	}	
 	
-	method image()
+	method image() = image
+	
+	method position() = position
+	
 }
 
-object zanahoria inherits Elemento {
+const zanahoria = new Elemento(copiaDeElemento = copiaZanahoria, image = "zanahoria.png", position = game.at(12,19))
 
-	method position() = game.at(12,10)
+const comidita = new Elemento(copiaDeElemento = copiaComidita, image = "comidita.png", position = game.at(16,19))
+
+object copiaZanahoria {
+	method position() = game.at(1,19)
 	
- 	override method image() = "zanahoria.png"
+	method image() = "zanahoria.png"
+	
 }
-object manzana inherits Elemento {
 
-	method position() = game.at(13,10)
+object copiaComidita {
+	method position() = game.at(3,19)
 	
- 	override method image() = "manzana.png"
+	method image() = "comidita.png"
 }

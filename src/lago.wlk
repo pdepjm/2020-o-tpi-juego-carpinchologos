@@ -5,12 +5,9 @@ object lago {
 	
 	method superficiesDeAgua() = superficiesDeAgua
 	
-	//method posicionesLago() = lago
-	
-	
 	method agregarAgua(unaPosicion, unaImagen){
 		const agua = new Agua(imagen = unaImagen, posicion = unaPosicion)
-		superficiesDeAgua.add(agua/* .position()*/)
+		superficiesDeAgua.add(agua)
 		game.addVisual(agua)
 	}
 	
@@ -24,7 +21,7 @@ object lago {
 
 	method generarBordeIntermedio(posicionDeY){
 		self.agregarAgua(game.at(0, posicionDeY), "lagoMedio.png")
-	}	
+	}
 }
 
 class Agua{
@@ -38,7 +35,8 @@ class Agua{
 	method atrapado() {
 		
 	}
-	method colisionDeCarpinchoConObjeto() {
-		game.stop()
+	method interaccionConCarpincho(carpincho) {
+		//game.stop() 
+		carpincho.desaparecer()
 	}
 }
