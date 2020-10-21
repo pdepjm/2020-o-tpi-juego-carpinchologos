@@ -15,7 +15,7 @@ class Carpincho {
 	
 	const necesidad = hambriento
 
-	//method necesidades() = necesidades
+	method elementoNecesario() = necesidad.objetoNecesario()
 	
 	method position() = posicion 
 
@@ -50,7 +50,7 @@ class Carpincho {
 	
 	method necesidadSatisfecha(elementos) = elementos.contains(necesidad.objetoNecesario())
 
-	method interaccionConPersonaje(unPersonaje){
+	/*method interaccionConPersonaje(unPersonaje){
 		var elementoEnComun = unPersonaje.elementosDelPersonajeQueSatisfacenAlCarpincho(self) 
 		// segun el modelado actual (correspondencia uno a uno entre necesidades y elementos que las satisfacen) 
 		//este elemento puede ser uno solo
@@ -61,7 +61,7 @@ class Carpincho {
 		//							  frutita eliminar el objeto de la pantalla
 
 		} //falta completar a futuro porque ahora solo lo estamos haciendo con una unica necesidad (posiblemente, ampliemos la cantidad de necesidades - ver)
-	}
+	}*/
 	
 
 }

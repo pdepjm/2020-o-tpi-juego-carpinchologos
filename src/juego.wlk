@@ -9,6 +9,8 @@ object juego {
 	
 	const property carpinchos = []
 	
+	const visuales = #{}
+	
     method iniciar(){
         self.configurarJuego()
         self.generarSuperficieDeAgua()
@@ -66,6 +68,17 @@ object juego {
 		game.onCollideDo(personaje, {algo => algo.interaccionConPersonaje(personaje)})
 	}
 	
+	
+	method crearVisual(imagen, posicion) {
+		const visual = new Visual(posicion = posicion, image = imagen)
+		visuales.add(visual)
+		game.addVisual(visual)
+	 
+	 }
+	 method quitarVisual(posicion){
+	 	const visual = visuales.find({visual => visual.position() == posicion})
+	 	game.removeVisual(visual)
+	 }
 } 
 
 

@@ -2,6 +2,7 @@ import wollok.game.*
 import carpincho.*
 import necesidades.*
 import objetosQueSatisfacen.*
+import juego.*
 
 object personaje {
 
@@ -26,7 +27,7 @@ object personaje {
 		if (self.pocosElementos())
 		{
 			elementosAgarrados.add(unElemento)
-			game.addVisual(unElemento.copiaDeElemento())
+			juego.crearVisual(unElemento.image(), unElemento.posicionVisual())
 		}
 		else game.say(self, "Ya tengo muchos elementos!")
 	}
@@ -35,9 +36,10 @@ object personaje {
 		if(unCarpincho.necesidadSatisfecha(elementosAgarrados))
 		{
 			unCarpincho.desaparecer()
-			const elemento = unCarpincho.necesidad().objetoNecesario() // Queda medio feucho VER MAS TARDE
+			const elemento = unCarpincho.elementoNecesario() // esto esta mal por que estamos obteniendo la necesidad del Carpincho cuando antes le consultamos si satisfacia
+			juego.quitarVisual(elemento.posicionVisual())
 			elementosAgarrados.remove(elemento) 
-			game.removeVisual(elemento.copiaDeElemento())
+			
 		}
 	}
 
@@ -52,5 +54,16 @@ object personaje {
 		const elementosEnComun = self.elementosAgarrados().intersection(objetosNecesarios)	
 		return elementosEnComun
 	}*/
+	
+}
 
+class Visual{
+	
+	var posicion
+	
+	var image
+	
+	method position() = posicion
+	
+	method image() = image
 }

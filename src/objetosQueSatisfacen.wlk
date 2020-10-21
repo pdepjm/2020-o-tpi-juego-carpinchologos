@@ -8,7 +8,7 @@ class Elemento {
 	
 	var position
 
-	method interaccionConElPersonaje(unPersonaje){
+	method interaccionConPersonaje(unPersonaje){
 		unPersonaje.agarrarElemento(self)
 	}	
 	
@@ -18,19 +18,18 @@ class Elemento {
 	
 }
 
-const zanahoria = new Elemento(copiaDeElemento = copiaZanahoria, image = "zanahoria.png", position = game.at(12,19))
-
-const comidita = new Elemento(copiaDeElemento = copiaComidita, image = "comidita.png", position = game.at(16,19))
-
-object copiaZanahoria {
-	method position() = game.at(1,19)
+object zanahoria inherits Elemento{
+	override method position() = game.at(12,19)
 	
-	method image() = "zanahoria.png"
+	override method image() = "zanahoria.png"
 	
+	method posicionVisual() = game.at(1, 19)
 }
 
-object copiaComidita {
-	method position() = game.at(3,19)
+object comidita inherits Elemento {
+	override method position() = game.at(16,19)
 	
-	method image() = "comidita.png"
+	override method image() = "comidita.png"
+	
+	method posicionVisual() = game.at(2, 19)
 }
