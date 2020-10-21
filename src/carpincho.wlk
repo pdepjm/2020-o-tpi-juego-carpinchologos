@@ -1,5 +1,4 @@
 import wollok.game.*
-import movimientos.*
 import lago.*
 import juego.*
 import personaje.*
