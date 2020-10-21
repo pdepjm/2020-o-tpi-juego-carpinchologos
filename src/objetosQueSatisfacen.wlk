@@ -2,8 +2,6 @@ import wollok.game.*
 
 class Elemento {
 	
-	var property copiaDeElemento
-	
 	var image
 	
 	var position

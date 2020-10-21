@@ -24,21 +24,30 @@ object personaje {
 	method pocosElementos() = elementosAgarrados.size() < 3
 	
 	method agarrarElemento(unElemento){
-		if (self.pocosElementos())
+		if (self.pocosElementos() )
 		{
-			elementosAgarrados.add(unElemento)
-			juego.crearVisual(unElemento.image(), unElemento.posicionVisual())
+			if(not self.elementoRepetido(unElemento))
+			{
+				elementosAgarrados.add(unElemento)
+			    juego.crearVisual(unElemento.image(), unElemento.posicionVisual())
+			}
+			else
+			{
+				game.say(self, "Ya tengo este elemento!")
+			}
 		}
 		else game.say(self, "Ya tengo muchos elementos!")
 	}
 	
+	method elementoRepetido(unElemento) = elementosAgarrados.contains(unElemento)
+	
 	method interaccionConCarpincho(unCarpincho) {
 		if(unCarpincho.necesidadSatisfecha(elementosAgarrados))
 		{
-			unCarpincho.desaparecer()
 			const elemento = unCarpincho.elementoNecesario() // esto esta mal por que estamos obteniendo la necesidad del Carpincho cuando antes le consultamos si satisfacia
+			unCarpincho.desaparecer()
 			juego.quitarVisual(elemento.posicionVisual())
-			elementosAgarrados.remove(elemento) 
+			elementosAgarrados.remove(elemento)
 			
 		}
 	}

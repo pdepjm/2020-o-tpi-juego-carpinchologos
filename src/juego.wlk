@@ -66,6 +66,7 @@ object juego {
 	
 	method configurarAcciones(){
 		game.onCollideDo(personaje, {algo => algo.interaccionConPersonaje(personaje)})
+		// El metodo interaccionConPersonaje se desarrollo para determinar la colision de un personaje con un elemento
 	}
 	
 	
@@ -77,6 +78,7 @@ object juego {
 	 }
 	 method quitarVisual(posicion){
 	 	const visual = visuales.find({visual => visual.position() == posicion})
+	 	visuales.remove(visual)
 	 	game.removeVisual(visual)
 	 }
 } 

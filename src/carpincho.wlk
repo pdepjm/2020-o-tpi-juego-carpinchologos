@@ -41,6 +41,8 @@ class Carpincho {
 	method interaccionConCarpincho(carpincho){
 		/* Necesario para que no tire mensaje de error (un carpincho choca con otro carpincho, aunque no sería necesario, pues se generan 
 		en distintos tiempos y posiciones, pero Wollok lo pide)*/
+		
+		// El metodo interaccionConCarpincho se desarrollo para determinar las colisiones de un carpincho con el agua y el personaje
 	}
 	
 	method desaparecer() {
@@ -49,6 +51,11 @@ class Carpincho {
 	}
 	
 	method necesidadSatisfecha(elementos) = elementos.contains(necesidad.objetoNecesario())
+	
+	method interaccionConPersonaje(unPersonaje) {
+		// Este metodo es necesario para la colision personaje con carpincho ("distinta" a la colision carpincho con personaje)
+	
+	}
 
 	/*method interaccionConPersonaje(unPersonaje){
 		var elementoEnComun = unPersonaje.elementosDelPersonajeQueSatisfacenAlCarpincho(self) 
