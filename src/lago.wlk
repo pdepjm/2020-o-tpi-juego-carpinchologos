@@ -13,11 +13,11 @@ object lago {
 	}
 	
 	method generarBordeSuperior() {
-		self.agregarAgua(game.at(0,19), "lagoSuperior.png")
+		self.agregarAgua(game.at(0,16), "lagoSuperior.png")
 	}
 	
 	method generarBordeInferior() {
-		self.agregarAgua(game.at(0,0), "lagoInferior.png")
+		self.agregarAgua(game.at(0,3), "lagoInferior.png")
 	}
 
 	method generarBordeIntermedio(posicionDeY){
