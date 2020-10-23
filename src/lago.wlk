@@ -9,6 +9,7 @@ object lago {
 		const agua = new Agua(imagen = unaImagen, posicion = unaPosicion)
 		superficiesDeAgua.add(agua)
 		game.addVisual(agua)
+		agua.determinarColision()
 	}
 	
 	method generarBordeSuperior() {
@@ -28,7 +29,6 @@ object lago {
 		self.generarBordeSuperior() //linea 16
 		12.times({ i => self.generarBordeIntermedio(i+3)})
 		self.generarBordeInferior() //linea 3
-		//agua.determinarColision()
 	}
 }
 
@@ -39,12 +39,19 @@ class Agua{
 	method position() = posicion
 	
 	method image() = imagen
-	
+
 	method atrapado() {
 		
 	}
-	method interaccionConCarpincho(carpincho) {
-		//game.stop() 
-		carpincho.desaparecer()
+
+	method determinarColision() {
+		game.onCollideDo(self, {visualColisionado => visualColisionado.interaccionConAgua()})
+	}
+	method interaccionConAgua() {
+		// Vacio para que no se rompa el polimorfismo 
+	}
+
+	method interaccionConPersonaje(unPersonaje) {
+		// No hace nada
 	}
 }

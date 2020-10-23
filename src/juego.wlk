@@ -5,6 +5,17 @@ import necesidades.*
 import lago.*
 import objetosQueSatisfacen.*
 
+class Visual{
+	
+	var posicion
+	
+	var image
+	
+	method position() = posicion
+	
+	method image() = image
+}
+
 object juego {
 	
 	const property carpinchos = []
@@ -17,8 +28,7 @@ object juego {
         self.agregarElementos()
         self.configurarTeclas()
 		self.generarCarpinchos()
-		self.agregarPersonajes()
-		self.configurarAcciones()
+		self.agregarPersonaje()
         game.start()
     }
 
@@ -29,8 +39,9 @@ object juego {
 		game.height(20)
 		game.boardGround("fondo.png")
 	}
-    method agregarPersonajes() {
+    method agregarPersonaje() { // El onCollide necesita el componente visual (es importante el orden de los métodos)
 		game.addVisual(personaje)
+		personaje.establecerComportamiento()
 	}
 
 	method agregarElementos() {
@@ -53,20 +64,12 @@ object juego {
 	method generarUnCarpinchoYMoverEnLineaRecta() {
 		const carpincho = new Carpincho()
 		game.addVisual(carpincho)
-		carpincho.aparecerEnBorde()
-		carpincho.avanzarAutomaticamente()
-		game.onCollideDo(carpincho, {visualColisionado => visualColisionado.interaccionConCarpincho(carpincho)}) // GENERAR REPORTE FINAL (PANTALLA DE RESUMEN AL FINAL DEL JUEGO)
+		carpincho.aparecerYMover()
 	}
 	
 	method generarSuperficieDeAgua(){		
 		lago.generar()
-	}
-	
-	method configurarAcciones(){
-		game.onCollideDo(personaje, {algo => algo.interaccionConPersonaje(personaje)})
-		// El metodo interaccionConPersonaje se desarrollo para determinar la colision de un personaje con un elemento
-	}
-	
+	}	
 	
 	method crearVisual(imagen, posicion) {
 		const visual = new Visual(posicion = posicion, image = imagen)

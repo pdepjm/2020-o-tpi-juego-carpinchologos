@@ -37,39 +37,37 @@ class Carpincho {
 		imagen = "carpinchoEnojado.jpg"
 	}
 	
-	method interaccionConCarpincho(carpincho){
-		/* Necesario para que no tire mensaje de error (un carpincho choca con otro carpincho, aunque no sería necesario, pues se generan 
-		en distintos tiempos y posiciones, pero Wollok lo pide)*/
-		
-		// El metodo interaccionConCarpincho se desarrollo para determinar las colisiones de un carpincho con el agua y el personaje
-	}
-	
+
 	method desaparecer() {
 		game.removeTickEvent("carpincho avanza")
         game.removeVisual(self)
 	}
 	
-	method necesidadSatisfecha(elementos) = elementos.contains(necesidad.objetoNecesario())
-	
-	method interaccionConPersonaje(unPersonaje) {
-		// Este metodo es necesario para la colision personaje con carpincho ("distinta" a la colision carpincho con personaje)
-	
+	method necesidadSatisfecha(unPersonaje) {
+		const elementos = unPersonaje.elementosAgarrados()
+		return elementos.contains(necesidad.objetoNecesario())
 	}
 
-	/*method interaccionConPersonaje(unPersonaje){
-		var elementoEnComun = unPersonaje.elementosDelPersonajeQueSatisfacenAlCarpincho(self) 
-		// segun el modelado actual (correspondencia uno a uno entre necesidades y elementos que las satisfacen) 
-		//este elemento puede ser uno solo
-		
-		if(not elementoEnComun.isEmpty()){
-		// darle la frutita implica : carpincho eliminar la necesidad
-    	//					 		  personaje eliminar objeto de la lista bolsita
-		//							  frutita eliminar el objeto de la pantalla
-
-		} //falta completar a futuro porque ahora solo lo estamos haciendo con una unica necesidad (posiblemente, ampliemos la cantidad de necesidades - ver)
-	}*/
+	method interaccionConPersonaje(unPersonaje) {
+	if(self.necesidadSatisfecha(unPersonaje))
+		{
+			const elemento = self.elementoNecesario() // esto esta mal por que estamos obteniendo la necesidad del Carpincho cuando antes le consultamos si satisfacia
+			self.desaparecer()
+			juego.quitarVisual(elemento.posicionVisual())
+			unPersonaje.quitarElemento(elemento)
+		}
+	}
 	
+	method interaccionConAgua() {
+		//game.stop() 
+		//game.mostrarReporte()
+		self.desaparecer()
+	}
 
+	method aparecerYMover() {
+		self.aparecerEnBorde()
+		self.avanzarAutomaticamente()
+	}
 }
 
 
@@ -92,4 +90,17 @@ Jugador:
 
 
 Al llegar a la abscisa 0, el juego se termina*/
+
+/*method interaccionConPersonaje(unPersonaje){
+		var elementoEnComun = unPersonaje.elementosDelPersonajeQueSatisfacenAlCarpincho(self) 
+		// segun el modelado actual (correspondencia uno a uno entre necesidades y elementos que las satisfacen) 
+		//este elemento puede ser uno solo
+		
+		if(not elementoEnComun.isEmpty()){
+		// darle la frutita implica : carpincho eliminar la necesidad
+    	//					 		  personaje eliminar objeto de la lista bolsita
+		//							  frutita eliminar el objeto de la pantalla
+
+		} //falta completar a futuro porque ahora solo lo estamos haciendo con una unica necesidad (posiblemente, ampliemos la cantidad de necesidades - ver)
+	}*/
 
