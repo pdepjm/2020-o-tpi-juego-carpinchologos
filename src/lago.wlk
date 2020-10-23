@@ -22,6 +22,14 @@ object lago {
 	method generarBordeIntermedio(posicionDeY){
 		self.agregarAgua(game.at(0, posicionDeY), "lagoMedio.png")
 	}
+
+	method generar() {
+		//falta modificar el fondo.png
+		self.generarBordeSuperior() //linea 16
+		12.times({ i => self.generarBordeIntermedio(i+3)})
+		self.generarBordeInferior() //linea 3
+		//agua.determinarColision()
+	}
 }
 
 class Agua{

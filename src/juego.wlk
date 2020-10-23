@@ -59,9 +59,7 @@ object juego {
 	}
 	
 	method generarSuperficieDeAgua(){		
-		lago.generarBordeSuperior()
-		18.times({ i => lago.generarBordeIntermedio(i)})
-		lago.generarBordeInferior()
+		lago.generar()
 	}
 	
 	method configurarAcciones(){
