@@ -1,11 +1,28 @@
 import objetosQueSatisfacen.*
 import personaje.*
+import wollok.game.*
 
-describe "Funcionamiento del personaje"{
-	test "El personaje puede agarrar un elemento" {
+describe "Funcionamiento del inventario"{
+	
+	fixture {
+		game.addVisual(personaje)
+	}
+	
+	test "El personaje agarra un elemento y se agrega al inventario" {
 	
 		personaje.agarrarElemento(zanahoria)
-		assert.equals({zanahoria}, personaje.elementosAgarrados())
+		assert.equals(#{zanahoria}, personaje.elementosAgarrados())
 	
 	}
-}	
+	test "No se pueden agarrar mas de una vez el mismo elemento"{
+		personaje.agarrarElemento(zanahoria)
+		personaje.agarrarElemento(zanahoria)
+		assert.equals(#{zanahoria}, personaje.elementosAgarrados())
+	}
+	test "No se pueden agregar muchos elementos al inventario"{
+		personaje.agarrarElemento(zanahoria)
+		personaje.agarrarElemento(comidita)
+		personaje.agarrarElemento(comidita)
+		assert.equals(#{zanahoria, comidita}, personaje.elementosAgarrados())
+	}
+}
