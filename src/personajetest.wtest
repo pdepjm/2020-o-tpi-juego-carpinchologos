@@ -1,0 +1,11 @@
+import objetosQueSatisfacen.*
+import personaje.*
+
+describe "Funcionamiento del personaje"{
+	test "El personaje puede agarrar un elemento" {
+	
+		personaje.agarrarElemento(zanahoria)
+		assert.equals({zanahoria}, personaje.elementosAgarrados())
+	
+	}
+}	

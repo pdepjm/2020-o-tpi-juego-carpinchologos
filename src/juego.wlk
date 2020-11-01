@@ -5,17 +5,6 @@ import necesidades.*
 import lago.*
 import objetosQueSatisfacen.*
 
-class Visual{
-	
-	var posicion
-	
-	var image
-	
-	method position() = posicion
-	
-	method image() = image
-}
-
 object juego {
 	
 	const property carpinchos = []
@@ -70,18 +59,6 @@ object juego {
 	method generarSuperficieDeAgua(){		
 		lago.generar()
 	}	
-	
-	method crearVisual(imagen, posicion) {
-		const visual = new Visual(posicion = posicion, image = imagen)
-		visuales.add(visual)
-		game.addVisual(visual)
-	 
-	 }
-	 method quitarVisual(posicion){
-	 	const visual = visuales.find({visual => visual.position() == posicion})
-	 	visuales.remove(visual)
-	 	game.removeVisual(visual)
-	 }
 } 
 
 

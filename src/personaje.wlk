@@ -3,14 +3,11 @@ import carpincho.*
 import necesidades.*
 import objetosQueSatisfacen.*
 import juego.*
+import inventario.*
 
 object personaje {
 
 	var position = game.at(3,6)
-
-	const elementosAgarrados = #{}
-
-	method elementosAgarrados() = elementosAgarrados
 	
 	method position() = position
 	
@@ -19,27 +16,10 @@ object personaje {
 	method moverseA(unaPosicion){
 		position = unaPosicion
 	}
-	
-	// El conjunto puede tener hasta 3 elementos
-	method pocosElementos() = elementosAgarrados.size() < 3
-	
+
 	method agarrarElemento(unElemento){
-		if (self.pocosElementos() )
-		{
-			if(not self.elementoRepetido(unElemento))
-			{
-				elementosAgarrados.add(unElemento)
-			    juego.crearVisual(unElemento.image(), unElemento.posicionVisual())
-			}
-			else
-			{
-				game.say(self, "Ya tengo este elemento!")
-			}
-		}
-		else game.say(self, "Ya tengo muchos elementos!")
+		inventario.agregarElemento(unElemento)
 	}
-	
-	method elementoRepetido(unElemento) = elementosAgarrados.contains(unElemento)
 
 	method interaccionConPersonaje() {
 		// Cuando el personaje interactua consigo mismo. Probar si se puede sacar
@@ -54,6 +34,10 @@ object personaje {
 	}
 
 	method quitarElemento(unElemento) {
-		elementosAgarrados.remove(unElemento)
+		inventario.removerElemento(unElemento)
+	}
+
+	method advertencia(textoAdvertencia) {
+		game.say(self, textoAdvertencia)
 	}
 }

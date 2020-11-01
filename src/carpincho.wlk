@@ -53,7 +53,6 @@ class Carpincho {
 		{
 			const elemento = self.elementoNecesario() // esto esta mal por que estamos obteniendo la necesidad del Carpincho cuando antes le consultamos si satisfacia
 			self.desaparecer()
-			juego.quitarVisual(elemento.posicionVisual())
 			unPersonaje.quitarElemento(elemento)
 		}
 	}
