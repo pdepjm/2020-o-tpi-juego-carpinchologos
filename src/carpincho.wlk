@@ -49,13 +49,13 @@ class Carpincho {
 	}
 
 	method interaccionConPersonaje(unPersonaje) {
-	if(self.necesidadSatisfecha(unPersonaje))
-		{
-			const elemento = self.elementoNecesario() // esto esta mal por que estamos obteniendo la necesidad del Carpincho cuando antes le consultamos si satisfacia
-			self.desaparecer()
-			unPersonaje.quitarElemento(elemento)
+		if(self.necesidadSatisfecha(unPersonaje)){
+				const elemento = self.elementoNecesario() // esto esta mal por que estamos obteniendo la necesidad del Carpincho cuando antes le consultamos si satisfacia
+				self.desaparecer()
+				unPersonaje.quitarElemento(elemento)
 		}
-	}
+		else game.say(self, "No quiero ese elemento!")
+	}	
 	
 	method interaccionConAgua() {
 		//game.stop() 
