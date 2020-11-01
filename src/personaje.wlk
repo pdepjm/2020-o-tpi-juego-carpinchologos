@@ -2,7 +2,6 @@ import wollok.game.*
 import carpincho.*
 import necesidades.*
 import objetosQueSatisfacen.*
-import juego.*
 import inventario.*
 
 object personaje {
@@ -20,6 +19,9 @@ object personaje {
 	method agarrarElemento(unElemento){
 		inventario.agregarElemento(unElemento)
 	}
+	
+	method elementosAgarrados() = inventario.elementosAgarrados()
+
 
 	method interaccionConPersonaje() {
 		// Cuando el personaje interactua consigo mismo. Probar si se puede sacar

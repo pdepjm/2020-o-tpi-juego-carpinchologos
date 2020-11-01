@@ -9,8 +9,6 @@ object juego {
 	
 	const property carpinchos = []
 	
-	const visuales = #{}
-	
     method iniciar(){
         self.configurarJuego()
         self.generarSuperficieDeAgua()

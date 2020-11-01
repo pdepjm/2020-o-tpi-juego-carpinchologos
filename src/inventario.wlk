@@ -1,9 +1,12 @@
 import juego.*
 import wollok.game.*
+import personaje.*
 
 object inventario{
 
-    const elementosAgarrados = #{}
+    const property elementosAgarrados = #{}
+    
+    const visuales = #{}
 
     // El conjunto puede tener hasta 3 elementos
     method pocosElementos() = elementosAgarrados.size() < 3
@@ -53,5 +56,9 @@ class Visual{
 	method position() = posicion
 	
 	method image() = image
+	
+	method interaccionConPersonaje(unPersonaje) {
+		// Necesario apra que wg no tire mensaje de error
+	}
 }
 
