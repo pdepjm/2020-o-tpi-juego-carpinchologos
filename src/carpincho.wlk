@@ -13,6 +13,8 @@ class Carpincho {
 	//const necesidades = #{hambriento} // maximo de 2
 	
 	var necesidad 
+
+	var yaMuto = false
 	
 	constructor () {
 		necesidad = juego.dameUnaNecesidad()
@@ -54,7 +56,7 @@ class Carpincho {
 	method interaccionConPersonaje(unPersonaje) {
 		if(self.necesidadSatisfecha(unPersonaje)){
 				const elemento = self.elementoNecesario()
-				self.desaparecer()
+				self.mutarOMorir()
 				unPersonaje.quitarElemento(elemento)
 		}
 		else if (unPersonaje.tieneAlgunElemento()) {
@@ -63,7 +65,7 @@ class Carpincho {
 	}	
 	
 	method interaccionConAgua() {
-		//game.stop() 
+		//game.stop()
 		//game.mostrarReporte()
 		self.desaparecer()
 	}
@@ -82,6 +84,27 @@ class Carpincho {
 		 * 
 		 */
 	}
+
+	method mutarOMorir(){
+        if(not yaMuto){
+            self.mutar()
+        }else {
+            self.desaparecer()
+        }
+    }
+
+    method mutar(){
+        //self.hacerRuidito()
+        //necesidad.accion()
+        yaMuto = true
+        //cambiar la imagen y la necesidad (usando la funcion de los chicos)
+        //ruidos de nacionalidad
+
+    }
+
+    method hacerRuidito(){
+        game.sound("sounds/sonidoMorder.wav").play()
+    }
 }
 
 
