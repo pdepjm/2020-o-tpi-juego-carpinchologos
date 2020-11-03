@@ -11,6 +11,8 @@ object inventario{
     // El conjunto puede tener hasta 3 elementos
     method pocosElementos() = elementosAgarrados.size() < 3
 
+	method hayElementos() = not elementosAgarrados.isEmpty()
+	
     method elementoRepetido(unElemento) = elementosAgarrados.contains(unElemento)
 
     method agregarElemento(unElemento){

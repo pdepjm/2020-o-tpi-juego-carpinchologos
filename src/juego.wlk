@@ -9,6 +9,10 @@ object juego {
 	
 	const property carpinchos = []
 	
+	const necesidadesPosibles = [suenito, hambriento]
+	
+	method dameUnaNecesidad() = necesidadesPosibles.anyOne()
+	
     method iniciar(){
         self.configurarJuego()
         self.generarSuperficieDeAgua()
@@ -45,7 +49,7 @@ object juego {
 
 	method generarCarpinchos(){
 		//on tick -> genere un carpincho hasta que el jugador gane o pierda
-		game.onTick(1000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+		game.onTick(3000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {

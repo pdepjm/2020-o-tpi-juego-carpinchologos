@@ -17,7 +17,7 @@ class Elemento {
 }
 
 object zanahoria inherits Elemento{
-	override method position() = game.at(12,19)
+	override method position() = game.at(12,0)
 	
 	override method image() = "zanahoria.png"
 	
@@ -25,7 +25,7 @@ object zanahoria inherits Elemento{
 }
 
 object comidita inherits Elemento {
-	override method position() = game.at(16,19)
+	override method position() = game.at(16,0)
 	
 	override method image() = "comidita.png"
 	

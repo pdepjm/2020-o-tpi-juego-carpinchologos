@@ -21,7 +21,8 @@ object personaje {
 	}
 	
 	method elementosAgarrados() = inventario.elementosAgarrados()
-
+	
+	method tieneAlgunElemento() = inventario.hayElementos()
 
 	method interaccionConPersonaje() {
 		// Cuando el personaje interactua consigo mismo. Probar si se puede sacar

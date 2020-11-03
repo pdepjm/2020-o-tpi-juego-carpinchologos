@@ -12,8 +12,12 @@ class Carpincho {
 	
 	//const necesidades = #{hambriento} // maximo de 2
 	
-	const necesidad = hambriento
-
+	var necesidad 
+	
+	constructor () {
+		necesidad = juego.dameUnaNecesidad()
+	}
+	
 	method elementoNecesario() = necesidad.objetoNecesario()
 	
 	method position() = posicion 
@@ -21,7 +25,7 @@ class Carpincho {
 	method image() = imagen
 
 	method avanzarAutomaticamente() {
-		game.onTick(1000, "carpincho avanza", { =>  self.avanzarLineaRecta()})
+		game.onTick(500, "carpincho avanza", { =>  self.avanzarLineaRecta()})
 	}
 
 	method avanzarLineaRecta() {
@@ -37,7 +41,6 @@ class Carpincho {
 		imagen = "carpinchoEnojado.jpg"
 	}
 	
-
 	method desaparecer() {
 		game.removeTickEvent("carpincho avanza")
         game.removeVisual(self)
@@ -50,11 +53,13 @@ class Carpincho {
 
 	method interaccionConPersonaje(unPersonaje) {
 		if(self.necesidadSatisfecha(unPersonaje)){
-				const elemento = self.elementoNecesario() // esto esta mal por que estamos obteniendo la necesidad del Carpincho cuando antes le consultamos si satisfacia
+				const elemento = self.elementoNecesario()
 				self.desaparecer()
 				unPersonaje.quitarElemento(elemento)
 		}
-		else game.say(self, "No quiero ese elemento!")
+		else if (unPersonaje.tieneAlgunElemento()) {
+				game.say(self, "No quiero ese elemento!")
+		}
 	}	
 	
 	method interaccionConAgua() {
@@ -66,6 +71,16 @@ class Carpincho {
 	method aparecerYMover() {
 		self.aparecerEnBorde()
 		self.avanzarAutomaticamente()
+		self.mostrarNecesidad()
+	}
+	
+	method mostrarNecesidad() {
+		const mensaje = "Tengo " + necesidad.nombre()
+		game.schedule(3000, { => game.say(self, mensaje)}) // FALTA CAMBIAR DE COLOR LA IMAGEN DEL CARPINCHO
+		/*
+		 * imagen = necesidad.carpinchoImagen()
+		 * 
+		 */
 	}
 }
 
