@@ -9,7 +9,7 @@ object inventario{
     const visuales = #{}
 
     // El conjunto puede tener hasta 3 elementos
-    method pocosElementos() = elementosAgarrados.size() < 3
+    method pocosElementos() = elementosAgarrados.size() < 5
 
 	method hayElementos() = not elementosAgarrados.isEmpty()
 	

@@ -10,8 +10,12 @@ object juego {
 	const property carpinchos = []
 	
 	const necesidadesPosibles = [suenito, hambriento]
+
+	const necesidadesMutadas = [argentino, italiano, frances]
 	
 	method dameUnaNecesidad() = necesidadesPosibles.anyOne()
+	method dameUnaNecesidadMutada() = necesidadesMutadas.anyOne()
+	//estan muriendo gatitos acá, volver a pensar
 	
     method iniciar(){
         self.configurarJuego()
@@ -38,6 +42,9 @@ object juego {
 	method agregarElementos() {
 		game.addVisual(zanahoria)
 		game.addVisual(comidita)
+		game.addVisual(lasagna)
+		game.addVisual(mate)
+		game.addVisual(pan)
 	}
 	
 	method configurarTeclas() {

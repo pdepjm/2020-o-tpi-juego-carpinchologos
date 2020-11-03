@@ -56,7 +56,7 @@ class Carpincho {
 	method interaccionConPersonaje(unPersonaje) {
 		if(self.necesidadSatisfecha(unPersonaje)){
 				const elemento = self.elementoNecesario()
-				self.mutarOMorir()
+				self.mutarOMorir()				
 				unPersonaje.quitarElemento(elemento)
 		}
 		else if (unPersonaje.tieneAlgunElemento()) {
@@ -95,11 +95,11 @@ class Carpincho {
 
     method mutar(){
         //self.hacerRuidito()
-        //necesidad.accion()
+        //necesidad.accion(self)
         yaMuto = true
+		necesidad = juego.dameUnaNecesidadMutada()
         //cambiar la imagen y la necesidad (usando la funcion de los chicos)
         //ruidos de nacionalidad
-
     }
 
     method hacerRuidito(){
