@@ -9,7 +9,7 @@ class Elemento {
 	method interaccionConPersonaje(unPersonaje){
 		unPersonaje.agarrarElemento(self)
 	}	
-	
+	//method imagenAsociada() {}
 	method image() = image
 	
 	method position() = position
@@ -40,10 +40,10 @@ object mate inherits Elemento{
 	method posicionVisual() = game.at(2, 19)
 }
 
-object lasagna inherits Elemento{
+object cerveza inherits Elemento{
 	override method position() = game.at(17,0)
-	
-	override method image() = "lasagna.png"
+	//cambiar la foto!!
+	override method image() = "cerveza.png"
 	
 	method posicionVisual() = game.at(3, 19)
 }

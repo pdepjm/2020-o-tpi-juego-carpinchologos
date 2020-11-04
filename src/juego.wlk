@@ -11,7 +11,7 @@ object juego {
 	
 	const necesidadesPosibles = [suenito, hambriento]
 
-	const necesidadesMutadas = [argentino, italiano, frances]
+	const necesidadesMutadas = [argentino, irlandes, frances]
 
 	var carpinchosSalvados = 0
 
@@ -54,7 +54,7 @@ object juego {
 	method agregarElementos() {
 		game.addVisual(zanahoria)
 		game.addVisual(comidita)
-		game.addVisual(lasagna)
+		game.addVisual(cerveza)
 		game.addVisual(mate)
 		game.addVisual(baguette)
 	}
@@ -68,7 +68,7 @@ object juego {
 
 	method generarCarpinchos(){
 		//on tick -> genere un carpincho hasta que el jugador gane o pierda
-		game.onTick(3000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+		game.onTick(4000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {

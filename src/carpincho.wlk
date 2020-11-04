@@ -27,7 +27,7 @@ class Carpincho {
 	method image() = imagen
 
 	method avanzarAutomaticamente() {
-		game.onTick(500, "carpincho avanza", { =>  self.avanzarLineaRecta()})
+		game.onTick(1000, "carpincho avanza", { =>  self.avanzarLineaRecta()})
 	}
 
 	method avanzarLineaRecta() {
@@ -88,7 +88,7 @@ class Carpincho {
 	}
 	
 	method mostrarNecesidad() {
-		const mensaje = "Tengo " + necesidad.nombre()
+		const mensaje = necesidad.mensaje()
 
 		game.schedule(3000, { => game.say(self, mensaje)}) // FALTA CAMBIAR DE COLOR LA IMAGEN DEL CARPINCHO
 		/*
@@ -110,8 +110,9 @@ class Carpincho {
         //necesidad.accion(self)
         yaMuto = true
 		necesidad = juego.dameUnaNecesidadMutada()
-        //cambiar la imagen y la necesidad (usando la funcion de los chicos)
-        //ruidos de nacionalidad
+       	imagen = necesidad.imagenAsociada() //rari, no se me ocurrió de otra forma
+       	game.schedule(1, {=> self.mostrarNecesidad()}) 
+     
     }
 
     method hacerRuidito(){

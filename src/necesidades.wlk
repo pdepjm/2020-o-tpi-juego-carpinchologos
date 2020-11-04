@@ -3,34 +3,38 @@ import objetosQueSatisfacen.*
 object hambriento {
 	method objetoNecesario() = zanahoria
 	
-	method nombre() = "hambrecito"
-
+	method mensaje() = "Tengo hambrecito"
+	method imagenAsociada() {}
 	//method accion(unCarpincho){}
 	
 }
 
 object suenito {
 	method objetoNecesario() = comidita
-	
-	method nombre() = "suenito"
+	method imagenAsociada() {}
+
+	method mensaje() = "Tengo suenito"
 
 	//method accion(){}
 }
 
 object argentino { // Pensar después otro nombre
+	method mensaje() = "Unas ganas de un matienzo!"
 	method objetoNecesario() = mate
-
-	method nombre() = "ganas de un matienzo!"
+	method imagenAsociada() = "carpinArgento.png"
+	
 }
 
-object italiano { // Pensar después otro nombre
-	method objetoNecesario() = lasagna
+object irlandes { // Pensar después otro nombre
+	method mensaje() = "Las ganas de una birrita que tengo"
+	method objetoNecesario() = cerveza
+	method imagenAsociada() = "carpinIrlandes.png"
 	
-	method nombre() = "ganas de una buena lasagna!"
 }
 
 object frances { // Pensar después otro nombre
+	method mensaje() = "Me traes un baguette calentito?"
 	method objetoNecesario() = baguette
-	
-	method nombre() = "de una baguette"
+	method imagenAsociada() = "carpinUlala.png"
+
 }
