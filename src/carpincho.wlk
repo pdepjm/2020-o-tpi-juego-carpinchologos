@@ -151,7 +151,8 @@ Al llegar a la abscisa 0, el juego se termina*/
 		if(not elementoEnComun.isEmpty()){
 		// darle la frutita implica : carpincho eliminar la necesidad
     	//					 		  personaje eliminar objeto de la lista bolsita
-		//							  frutita eliminar el objeto de la pantalla
+		//	
+								  frutita eliminar el objeto de la pantalla
 
 		} //falta completar a futuro porque ahora solo lo estamos haciendo con una unica necesidad (posiblemente, ampliemos la cantidad de necesidades - ver)
 	}*/
