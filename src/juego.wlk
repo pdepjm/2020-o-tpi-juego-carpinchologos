@@ -12,8 +12,19 @@ object juego {
 	const necesidadesPosibles = [suenito, hambriento]
 
 	const necesidadesMutadas = [argentino, italiano, frances]
+
+	var carpinchosSalvados = 0
+
+	method incrementarCarpinchosSalvados() {
+		carpinchosSalvados += 1
+	}
+
+	method mostrarReporte() {
+
+	}
 	
 	method dameUnaNecesidad() = necesidadesPosibles.anyOne()
+
 	method dameUnaNecesidadMutada() = necesidadesMutadas.anyOne()
 	//estan muriendo gatitos acá, volver a pensar
 	
@@ -32,7 +43,8 @@ object juego {
 		game.title("Carpinchologos")
 		game.width(30)
 		game.height(20)
-		game.boardGround("fondo.png")
+		//game.boardGround("fondo.png")
+		game.addVisual(fondo) // Se modeló al fondo con un objeto para cambiarlo al final y mostrar el reporte
 	}
     method agregarPersonaje() { // El onCollide necesita el componente visual (es importante el orden de los métodos)
 		game.addVisual(personaje)
@@ -44,7 +56,7 @@ object juego {
 		game.addVisual(comidita)
 		game.addVisual(lasagna)
 		game.addVisual(mate)
-		game.addVisual(pan)
+		game.addVisual(baguette)
 	}
 	
 	method configurarTeclas() {
@@ -67,9 +79,21 @@ object juego {
 	
 	method generarSuperficieDeAgua(){		
 		lago.generar()
-	}	
+	}
 } 
 
+object fondo {
+    var image = "fondo.png"
 
+    var position = game.at(0,0)
 
+    method image() = image
+
+	method position() = position
+
+    method cambiarFondo(nuevoFondo) {
+        image = nuevoFondo
+        game.addVisual(self)
+    }
+}
 

@@ -17,20 +17,20 @@ object suenito {
 	//method accion(){}
 }
 
-object argentino {
+object argentino { // Pensar después otro nombre
 	method objetoNecesario() = mate
 
-	method nombre() = "ganas de un mate!"
+	method nombre() = "ganas de un matienzo!"
 }
 
-object italiano {
+object italiano { // Pensar después otro nombre
 	method objetoNecesario() = lasagna
 	
 	method nombre() = "ganas de una buena lasagna!"
 }
 
-object frances {
-	method objetoNecesario() = pan
+object frances { // Pensar después otro nombre
+	method objetoNecesario() = baguette
 	
 	method nombre() = "de una baguette"
 }

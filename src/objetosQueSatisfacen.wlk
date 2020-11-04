@@ -48,10 +48,10 @@ object lasagna inherits Elemento{
 	method posicionVisual() = game.at(3, 19)
 }
 
-object pan inherits Elemento{
+object baguette inherits Elemento{
 	override method position() = game.at(19,0)
 	
-	override method image() = "pan.png"
+	override method image() = "baguette.png"
 	
 	method posicionVisual() = game.at(4, 19)
 }

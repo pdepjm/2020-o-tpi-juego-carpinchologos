@@ -44,8 +44,10 @@ class Carpincho {
 	}
 	
 	method desaparecer() {
+		juego.incrementarCarpinchosSalvados()
 		game.removeTickEvent("carpincho avanza")
         game.removeVisual(self)
+
 	}
 	
 	method necesidadSatisfecha(unPersonaje) {
@@ -65,19 +67,29 @@ class Carpincho {
 	}	
 	
 	method interaccionConAgua() {
-		//game.stop()
-		//game.mostrarReporte()
-		self.desaparecer()
+		game.clear()
+		//juego.mostrarReporte()
+		
+		//self.desaparecer()
+		juego.mostrarReporte() //fondo.cambiarFondo("pasto.jpg")
+		game.schedule(5000, { => game.stop()})
+
+		//1. borra todos lo objetos 
+		// 2. muestra el reporte
+		// 3. se cierra
 	}
 
 	method aparecerYMover() {
 		self.aparecerEnBorde()
+
 		self.avanzarAutomaticamente()
+
 		self.mostrarNecesidad()
 	}
 	
 	method mostrarNecesidad() {
 		const mensaje = "Tengo " + necesidad.nombre()
+
 		game.schedule(3000, { => game.say(self, mensaje)}) // FALTA CAMBIAR DE COLOR LA IMAGEN DEL CARPINCHO
 		/*
 		 * imagen = necesidad.carpinchoImagen()
@@ -103,7 +115,8 @@ class Carpincho {
     }
 
     method hacerRuidito(){
-        game.sound("sounds/sonidoMorder.wav").play()
+    	const sonido = game.sound("sounds/sonidoMorder.wav")
+        sonido.play()
     }
 }
 
