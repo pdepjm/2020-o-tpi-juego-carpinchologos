@@ -71,7 +71,8 @@ class Carpincho {
 		//juego.mostrarReporte()
 		
 		//self.desaparecer()
-		juego.mostrarReporte() //fondo.cambiarFondo("pasto.jpg")
+		//juego.mostrarReporte()
+		 fondo.cambiarFondo("fonditoReporte.jpg")
 		game.schedule(5000, { => game.stop()})
 
 		//1. borra todos lo objetos 

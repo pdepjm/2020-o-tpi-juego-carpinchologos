@@ -83,7 +83,7 @@ object juego {
 } 
 
 object fondo {
-    var image = "fondo.png"
+    var image = "fondo.jpg"
 
     var position = game.at(0,0)
 
