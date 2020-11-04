@@ -17,7 +17,7 @@ class Carpincho {
 	var yaMuto = false
 	
 	constructor () {
-		necesidad = juego.dameUnaNecesidad()
+		necesidad = tiposDeNecesidades.dameUnaNecesidadInicial()
 	}
 	
 	method elementoNecesario() = necesidad.objetoNecesario()
@@ -91,11 +91,7 @@ class Carpincho {
 	method mostrarNecesidad() {
 		const mensaje = necesidad.mensaje()
 
-		game.schedule(3000, { => game.say(self, mensaje)}) // FALTA CAMBIAR DE COLOR LA IMAGEN DEL CARPINCHO
-		/*
-		 * imagen = necesidad.carpinchoImagen()
-		 * 
-		 */
+		game.schedule(3000, { => game.say(self, mensaje)})
 	}
 
 	method mutarOMorir(){
@@ -110,15 +106,15 @@ class Carpincho {
         //self.hacerRuidito()
         //necesidad.accion(self)
         yaMuto = true
-		necesidad = juego.dameUnaNecesidadMutada()
-       	imagen = necesidad.imagenAsociada() //rari, no se me ocurrió de otra forma
-       	game.schedule(1, {=> self.mostrarNecesidad()}) 
+		necesidad = tiposDeNecesidades.dameUnaNecesidadMutada()
+       	imagen = necesidad.imagenAsociada()
+       	game.schedule(1, {=> self.mostrarNecesidad()})
      
     }
 
     method hacerRuidito(){
     	const sonido = game.sound("sounds/sonidoMorder.wav")
-        sonido.play()
+        return sonido.play()
     }
 }
 

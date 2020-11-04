@@ -1,5 +1,15 @@
 import objetosQueSatisfacen.*
 
+object tiposDeNecesidades {
+	const necesidadesIniciales = [suenito, hambriento]
+
+	const necesidadesMutadas = [argentino, irlandes, frances]
+	
+	method dameUnaNecesidadInicial() = necesidadesIniciales.anyOne()
+
+	method dameUnaNecesidadMutada() = necesidadesMutadas.anyOne()
+}
+
 object hambriento {
 	method objetoNecesario() = zanahoria
 	

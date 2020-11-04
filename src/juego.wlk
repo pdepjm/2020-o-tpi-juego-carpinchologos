@@ -8,44 +8,58 @@ import objetosQueSatisfacen.*
 object juego {
 	
 	const property carpinchos = []
-	
-	const necesidadesPosibles = [suenito, hambriento]
-
-	const necesidadesMutadas = [argentino, irlandes, frances]
 
 	var carpinchosSalvados = 0
+	
+	var teclaUsada = false
 
 	method incrementarCarpinchosSalvados() {
 		carpinchosSalvados += 1
 	}
 
 	method mostrarReporte() {
+		fondo.cambiarFondo("fonditoReporte.jpg")
+	}
 
+	method cargarMenu() {
+		
+		fondo.cambiarFondo("menu.png") // Se modeló al fondo con un objeto para cambiarlo al final y mostrar el reporte
+		
+		game.addVisual(fondo)
+		
+		keyboard.enter().onPressDo({self.determinarComportamientoDeTeclaEnter()})
 	}
 	
-	method dameUnaNecesidad() = necesidadesPosibles.anyOne()
+	method determinarComportamientoDeTeclaEnter() {
+		if (not teclaUsada) {
+			personaje.imagen("alf.jpg") self.postMenu() 
+			
+			teclaUsada = true
+		}
+	}
 
-	method dameUnaNecesidadMutada() = necesidadesMutadas.anyOne()
-	//estan muriendo gatitos acá, volver a pensar
-	
     method iniciar(){
-        self.configurarJuego()
-        self.generarSuperficieDeAgua()
+    	self.configurarJuego()
+		self.cargarMenu()
+        game.start()
+    }
+	
+	method postMenu() {
+		fondo.cambiarFondo("fondo.jpg")
+		self.generarSuperficieDeAgua()
         self.agregarElementos()
         self.configurarTeclas()
 		self.generarCarpinchos()
 		self.agregarPersonaje()
-        game.start()
-    }
+	}
 
     method configurarJuego() {
-		game.cellSize(64)
+ 		game.cellSize(64)
 		game.title("Carpinchologos")
 		game.width(30)
 		game.height(20)
-		//game.boardGround("fondo.png")
-		game.addVisual(fondo) // Se modeló al fondo con un objeto para cambiarlo al final y mostrar el reporte
 	}
+
     method agregarPersonaje() { // El onCollide necesita el componente visual (es importante el orden de los métodos)
 		game.addVisual(personaje)
 		personaje.establecerComportamiento()
@@ -83,9 +97,9 @@ object juego {
 } 
 
 object fondo {
-    var image = "fondo.jpg"
+    var image = "menu.png"
 
-    var position = game.at(0,0)
+    const position = game.at(0,0)
 
     method image() = image
 
@@ -93,7 +107,8 @@ object fondo {
 
     method cambiarFondo(nuevoFondo) {
         image = nuevoFondo
-        game.addVisual(self)
+
+        //game.addVisual(self)
     }
 }
 

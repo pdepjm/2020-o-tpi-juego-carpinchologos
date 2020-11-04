@@ -7,10 +7,12 @@ import inventario.*
 object personaje {
 
 	var position = game.at(3,6)
+
+	var property imagen 
 	
 	method position() = position
 	
-	method image() = "boo.png"
+	method image() = imagen
 
 	method moverseA(unaPosicion){
 		position = unaPosicion
