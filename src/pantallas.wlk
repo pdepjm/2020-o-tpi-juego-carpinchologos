@@ -17,17 +17,18 @@ object pantallas {
 	
 	method determinarComportamientoDeTeclaEnter() {
 		if (not teclaEnterUsada) {
-			juego.reproducir("audioRasta.mp3")
+			//juego.reproducir("audioRasta.mp3")
 			fondo.cambiar("menu.png")
 			teclaEnterUsada = true
-			keyboard.a().onPressDo({self.determinarSeleccionDePersonaje("alf.png")})
-			keyboard.r().onPressDo({self.determinarSeleccionDePersonaje("rasta.png")})
+			keyboard.a().onPressDo({self.determinarSeleccionDePersonaje("alf.png", "chacarera.mp3")})
+			keyboard.r().onPressDo({self.determinarSeleccionDePersonaje("rasta.png", "alalalalalong.mp3")})
 		}
 	}
 	
-	method determinarSeleccionDePersonaje(imagenDePersonaje) {
+	
+	method determinarSeleccionDePersonaje(imagenDePersonaje, sonido) {
 		if (not teclaDeSeleccionUsada) {
-			personaje.imagen(imagenDePersonaje) 
+			personaje.seleccionado(imagenDePersonaje, sonido)
 			teclaDeSeleccionUsada = true
 			juego.postSeleccion()
 		}
@@ -35,7 +36,7 @@ object pantallas {
 	
 	method mostrarReporte() {
 		fondo.cambiar("fonditoReporte.jpg")
-		juego.reproducir("missionPassed.mp3")
+		juego.cambiarMusica("missionPassed.mp3")
 		game.addVisual(fondo)
 		game.schedule(10000, { => game.stop()})
 	}

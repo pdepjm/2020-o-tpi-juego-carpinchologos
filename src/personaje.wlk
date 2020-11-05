@@ -3,6 +3,7 @@ import carpincho.*
 import necesidades.*
 import objetosQueSatisfacen.*
 import inventario.*
+import juego.*
 
 object personaje {
 
@@ -44,5 +45,12 @@ object personaje {
 
 	method advertencia(textoAdvertencia) {
 		game.say(self, textoAdvertencia)
+	}
+	
+	method seleccionado(imagenASetear, musica) {
+		imagen = imagenASetear
+		const musicaASettear = game.sound("sounds/" + musica) // ABSTRAER EESTE CACHITO DE CODIGO
+		juego.musica(musicaASettear) // CUANDO INICIALICEMOS LA MUSICA EN ESTE PUNTO TENEMOS QUE USAR EL METODO CAMBIARMUSICA(PARAM)
+		juego.reproducirMusica()
 	}
 }

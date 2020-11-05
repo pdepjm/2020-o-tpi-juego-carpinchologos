@@ -11,6 +11,8 @@ object juego {
 	const property carpinchos = []
 
 	var carpinchosSalvados = 0
+	
+	var property musica = game.sound("sounds/chacarera.mp3") // SETTEAR MUSICA INICIAL
 
 	method incrementarCarpinchosSalvados() {
 		carpinchosSalvados += 1
@@ -20,6 +22,7 @@ object juego {
     	self.configurarJuego()
 		pantallas.ejecutar()
         game.start()
+        //self.reproducirMusica()
     }
 	
 	method postSeleccion() {
@@ -73,9 +76,20 @@ object juego {
 		lago.generar()
 	}
 	
-	method reproducir(sonidoAReproducir){
+	method reproducirSonido(sonidoAReproducir){ // Reproduce un sonido cualquiera
     	const sonido = game.sound("sounds/" + sonidoAReproducir)
         sonido.play()
+    }
+    
+    method reproducirMusica() { // Reproduce la musica del juego
+    	musica.volume(0.30)
+    	musica.play()
+    }
+    
+    method cambiarMusica(musicaNueva) {
+    	musica.stop()
+    	musica = game.sound("sounds/" + musicaNueva)
+    	self.reproducirMusica()
     }
 } 
 

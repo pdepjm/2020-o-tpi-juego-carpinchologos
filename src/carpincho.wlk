@@ -88,7 +88,7 @@ class Carpincho {
     }
 
     method mutar(){
-        juego.reproducir("sonidoMorder.mp3")
+        juego.reproducirSonido("sonidoMorder.mp3")
         yaMuto = true
 		necesidad = tiposDeNecesidades.dameUnaNecesidadMutada()
        	imagen = necesidad.imagenAsociada()
