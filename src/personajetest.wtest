@@ -24,15 +24,15 @@ describe "Funcionamiento del inventario"{
 	}
 	test "No se pueden agregar muchos elementos al inventario"{
 		personaje.agarrarElemento(zanahoria)
-		personaje.agarrarElemento(comidita)
-		personaje.agarrarElemento(comidita)
-		assert.equals(#{zanahoria, comidita}, personaje.elementosAgarrados())
+		personaje.agarrarElemento(manzana)
+		personaje.agarrarElemento(manzana)
+		assert.equals(#{zanahoria, manzana}, personaje.elementosAgarrados())
 	}
 	test "El personaje le da al carpincho un elemento que no necesita, el inventario no se modifica"{
 		personaje.agarrarElemento(zanahoria)
 		const carpincho = new Carpincho()
 		game.addVisual(carpincho)
-		carpincho.necesidad(suenito)
+		carpincho.necesidad(hambrientoDeManzana)
 		const elementosIniciales = inventario.elementosAgarrados()
 		carpincho.interaccionConPersonaje(personaje)
 		const elementosFinales = inventario.elementosAgarrados()

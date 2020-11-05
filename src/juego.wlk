@@ -4,7 +4,7 @@ import carpincho.*
 import necesidades.*
 import lago.*
 import objetosQueSatisfacen.*
-import presentacion.*
+import pantallas.*
 
 object juego {
 	
@@ -81,7 +81,6 @@ object juego {
 
 object fondo {
     var image = "menu.png"
-
     const position = game.at(0,0)
 
     method image() = image

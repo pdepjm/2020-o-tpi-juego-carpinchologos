@@ -8,7 +8,6 @@ object inventario{
     
     const visuales = #{}
 
-    // El conjunto puede tener hasta 3 elementos
     method pocosElementos() = elementosAgarrados.size() < 3
 
 	method hayElementos() = not elementosAgarrados.isEmpty()
@@ -60,7 +59,7 @@ class Visual{
 	method image() = image
 	
 	method interaccionConPersonaje(unPersonaje) {
-		// Necesario apra que wg no tire mensaje de error
+		// Necesario para que no tire mensaje de error
 	}
 }
 

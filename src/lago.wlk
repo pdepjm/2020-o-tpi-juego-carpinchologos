@@ -25,10 +25,9 @@ object lago {
 	}
 
 	method generar() {
-		//falta modificar el fondo.png
-		self.generarBordeSuperior() //linea 16
+		self.generarBordeSuperior()
 		12.times({ i => self.generarBordeIntermedio(i+3)})
-		self.generarBordeInferior() //linea 3
+		self.generarBordeInferior()
 	}
 }
 
@@ -40,18 +39,13 @@ class Agua{
 	
 	method image() = imagen
 
-	method atrapado() {
-		
-	}
-
 	method determinarColision() {
 		game.onCollideDo(self, {visualColisionado => visualColisionado.interaccionConAgua()})
 	}
 	method interaccionConAgua() {
 		// Vacio para que no se rompa el polimorfismo 
 	}
-
 	method interaccionConPersonaje(unPersonaje) {
-		// No hace nada
+		// Vacio para que no se rompa el polimorfismo 
 	}
 }
