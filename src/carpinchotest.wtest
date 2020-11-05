@@ -1,0 +1,14 @@
+import carpincho.*
+import juego.*
+import wollok.game.*
+
+describe "Acciones del carpincho"{
+	
+	test "Carpincho muta cuando el personaje le entrega el primer elemento" {
+		const carpincho = new Carpincho()
+		const necesidadInicial = carpincho.necesidad()
+		carpincho.mutarOMorir()
+		const necesidadFinal = carpincho.necesidad()
+		assert.notEquals(necesidadFinal, necesidadInicial)
+	}
+}

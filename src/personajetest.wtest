@@ -1,6 +1,9 @@
 import objetosQueSatisfacen.*
 import personaje.*
 import wollok.game.*
+import carpincho.*
+import necesidades.*
+import inventario.*
 
 describe "Funcionamiento del inventario"{
 	
@@ -24,5 +27,15 @@ describe "Funcionamiento del inventario"{
 		personaje.agarrarElemento(comidita)
 		personaje.agarrarElemento(comidita)
 		assert.equals(#{zanahoria, comidita}, personaje.elementosAgarrados())
+	}
+	test "El personaje le da al carpincho un elemento que no necesita, el inventario no se modifica"{
+		personaje.agarrarElemento(zanahoria)
+		const carpincho = new Carpincho()
+		game.addVisual(carpincho)
+		carpincho.necesidad(suenito)
+		const elementosIniciales = inventario.elementosAgarrados()
+		carpincho.interaccionConPersonaje(personaje)
+		const elementosFinales = inventario.elementosAgarrados()
+		assert.equals(elementosFinales, elementosIniciales)
 	}
 }

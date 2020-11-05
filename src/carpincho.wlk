@@ -13,7 +13,7 @@ class Carpincho {
 	
 	//const necesidades = #{hambriento} // maximo de 2
 	
-	var necesidad 
+	var property necesidad 
 
 	var yaMuto = false
 	
