@@ -15,20 +15,19 @@ object inventario{
     method elementoRepetido(unElemento) = elementosAgarrados.contains(unElemento)
 
     method agregarElemento(unElemento){
-		if (self.pocosElementos())
-		{
-			if(not self.elementoRepetido(unElemento))
-			{
-				elementosAgarrados.add(unElemento)
-			    self.crearVisual(unElemento.image(), unElemento.posicionVisual())
-			}
-			else
-			{
-				personaje.advertencia("Ya tengo este elemento!")
-			}
-		}
-		else personaje.advertencia("Ya tengo muchos elementos!")
+		self.verificarAgarrar(unElemento) 
+		elementosAgarrados.add(unElemento)
+		self.crearVisual(unElemento.image(), unElemento.posicionVisual())
 	}
+	
+	
+	method verificarAgarrar(unElemento){
+	  	if(not self.pocosElementos()) 				self.error("Ya tengo muchos elementos!")
+	  	if(self.elementoRepetido(unElemento))	self.error("Ya tengo este elemento!")  
+	}
+	
+	
+	
 
     method removerElemento(unElemento) {
         elementosAgarrados.remove(unElemento)
@@ -36,8 +35,8 @@ object inventario{
     }
 
     method crearVisual(imagen, posicion) {
-		const visual = new Visual(posicion = posicion, image = imagen)
-		visuales.add(visual)
+		const visual = new Visual(posicion = posicion, image = imagen)			//code smells, imagen necesario? es la misma
+		visuales.add(visual)													//posicion si
 		game.addVisual(visual)
 	 }
      

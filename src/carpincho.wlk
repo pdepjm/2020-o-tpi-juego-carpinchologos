@@ -76,8 +76,8 @@ class Carpincho {
 		self.mostrarNecesidad()
 	}
 	
-	method mostrarNecesidad() { 
-		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, mensaje)})
+	method mostrarNecesidad() { 															//podemos moverlo a necesidades.wlk para la buena delegacion
+		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, mensaje)}) //necesidad.mensaje()
 	}
 
 	method mutarOMorir(elemento){
@@ -93,7 +93,7 @@ class Carpincho {
         elemento.reproducirSonidoDeAccion()
         yaMuto = true
 		necesidad = tiposDeNecesidades.dameUnaNecesidadMutada()
-		mensaje = necesidad.mensaje()
-       	imagen = necesidad.imagenAsociada()
+		mensaje = necesidad.mensaje()								//eliminar mensaje, necesidad se encarga del msj
+       	imagen = necesidad.imagenAsociada()							//eliminar imagen,  necesidad se encarga de imagen
     }
 }

@@ -20,7 +20,12 @@ object personaje {
 	}
 
 	method agarrarElemento(unElemento){
-		inventario.agregarElemento(unElemento)
+		try{ inventario.agregarElemento(unElemento)}
+		catch excepcion : DomainException {
+			self.advertencia(excepcion.message())
+		}
+
+		
 	}
 	
 	method elementosAgarrados() = inventario.elementosAgarrados()
