@@ -1,7 +1,7 @@
 import objetosQueSatisfacen.*
 
 object tiposDeNecesidades {
-	const necesidadesIniciales = [suenito, hambriento]
+	const necesidadesIniciales = [hambrientoDeZanahorias, hambrientoDeManzana]
 
 	const necesidadesMutadas = [argentino, irlandes, frances]
 	
@@ -10,41 +10,32 @@ object tiposDeNecesidades {
 	method dameUnaNecesidadMutada() = necesidadesMutadas.anyOne()
 }
 
-object hambriento {
+object hambrientoDeZanahorias {
+	method mensaje() = "TRAEME ZANAHORIAS"
 	method objetoNecesario() = zanahoria
-	
-	method mensaje() = "Tengo hambrecito"
 	method imagenAsociada() {}
-	//method accion(unCarpincho){}
-	
 }
 
-object suenito {
-	method objetoNecesario() = comidita
+object hambrientoDeManzana {
+	method mensaje() = "NECESITO UNA MANZANA"
+	method objetoNecesario() = manzana
 	method imagenAsociada() {}
-
-	method mensaje() = "Tengo suenito"
-
-	//method accion(){}
 }
 
 object argentino { // Pensar después otro nombre
-	method mensaje() = "Unas ganas de un matienzo!"
-	method objetoNecesario() = mate
+	method mensaje() = "QUE GANAS DE UN MATTIOLI REEEY!"
+	method objetoNecesario() = matienzo
 	method imagenAsociada() = "carpinArgento.png"
-	
 }
 
 object irlandes { // Pensar después otro nombre
-	method mensaje() = "Las ganas de una birrita que tengo"
-	method objetoNecesario() = cerveza
+	method mensaje() = "ALCANZAME UNA BIRRITA"
+	method objetoNecesario() = birra
 	method imagenAsociada() = "carpinIrlandes.png"
-	
 }
 
 object frances { // Pensar después otro nombre
-	method mensaje() = "Me traes un baguette calentito?"
+	method mensaje() = "ME TRAES UN BAGUETTE CALENTITO?"
 	method objetoNecesario() = baguette
 	method imagenAsociada() = "carpinUlala.png"
-
 }

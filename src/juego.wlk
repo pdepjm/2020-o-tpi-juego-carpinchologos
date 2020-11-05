@@ -4,48 +4,26 @@ import carpincho.*
 import necesidades.*
 import lago.*
 import objetosQueSatisfacen.*
+import presentacion.*
 
 object juego {
 	
 	const property carpinchos = []
 
 	var carpinchosSalvados = 0
-	
-	var teclaUsada = false
 
 	method incrementarCarpinchosSalvados() {
 		carpinchosSalvados += 1
 	}
-
-	method mostrarReporte() {
-		fondo.cambiarFondo("fonditoReporte.jpg")
-	}
-
-	method cargarMenu() {
-		
-		fondo.cambiarFondo("menu.png") // Se modeló al fondo con un objeto para cambiarlo al final y mostrar el reporte
-		
-		game.addVisual(fondo)
-		
-		keyboard.enter().onPressDo({self.determinarComportamientoDeTeclaEnter()})
-	}
 	
-	method determinarComportamientoDeTeclaEnter() {
-		if (not teclaUsada) {
-			personaje.imagen("alf.jpg") self.postMenu() 
-			
-			teclaUsada = true
-		}
-	}
-
     method iniciar(){
     	self.configurarJuego()
-		self.cargarMenu()
+		pantallas.ejecutar()
         game.start()
     }
 	
-	method postMenu() {
-		fondo.cambiarFondo("fondo.jpg")
+	method postSeleccion() {
+		fondo.cambiar("fondo.png")
 		self.generarSuperficieDeAgua()
         self.agregarElementos()
         self.configurarTeclas()
@@ -67,9 +45,9 @@ object juego {
 
 	method agregarElementos() {
 		game.addVisual(zanahoria)
-		game.addVisual(comidita)
-		game.addVisual(cerveza)
-		game.addVisual(mate)
+		game.addVisual(manzana)
+		game.addVisual(birra)
+		game.addVisual(matienzo)
 		game.addVisual(baguette)
 	}
 	
@@ -94,6 +72,11 @@ object juego {
 	method generarSuperficieDeAgua(){		
 		lago.generar()
 	}
+	
+	method reproducir(sonidoAReproducir){
+    	const sonido = game.sound("sounds/" + sonidoAReproducir)
+        sonido.play()
+    }
 } 
 
 object fondo {
@@ -105,10 +88,8 @@ object fondo {
 
 	method position() = position
 
-    method cambiarFondo(nuevoFondo) {
+    method cambiar(nuevoFondo) {
         image = nuevoFondo
-
-        //game.addVisual(self)
     }
 }
 

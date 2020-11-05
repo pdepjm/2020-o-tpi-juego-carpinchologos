@@ -3,6 +3,7 @@ import lago.*
 import juego.*
 import personaje.*
 import necesidades.*
+import presentacion.*
 
 class Carpincho {
 
@@ -46,6 +47,7 @@ class Carpincho {
 	method desaparecer() {
 		juego.incrementarCarpinchosSalvados()
 		game.removeTickEvent("carpincho avanza")
+		game.removeTickEvent("carpincho muestra su necesidad")
         game.removeVisual(self)
 
 	}
@@ -63,6 +65,7 @@ class Carpincho {
 		}
 		else if (unPersonaje.tieneAlgunElemento()) {
 				game.say(self, "No quiero ese elemento!")
+				
 		}
 	}	
 	
@@ -72,8 +75,12 @@ class Carpincho {
 		
 		//self.desaparecer()
 		//juego.mostrarReporte()
-		 fondo.cambiarFondo("fonditoReporte.jpg")
-		game.schedule(5000, { => game.stop()})
+		
+		pantallas.mostrarReporte()
+		
+		//fondo.cambiar("fonditoReporte.jpg")
+		//game.addVisual(fondo)
+		//game.schedule(5000, { => game.stop()})
 
 		//1. borra todos lo objetos 
 		// 2. muestra el reporte
@@ -91,7 +98,8 @@ class Carpincho {
 	method mostrarNecesidad() {
 		const mensaje = necesidad.mensaje()
 
-		game.schedule(3000, { => game.say(self, mensaje)})
+		//game.schedule(3000, { => game.say(self, mensaje)})
+		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, mensaje)})
 	}
 
 	method mutarOMorir(){
@@ -103,19 +111,21 @@ class Carpincho {
     }
 
     method mutar(){
-        //self.hacerRuidito()
+        juego.reproducir("sonidoMorder.mp3")
         //necesidad.accion(self)
         yaMuto = true
 		necesidad = tiposDeNecesidades.dameUnaNecesidadMutada()
        	imagen = necesidad.imagenAsociada()
-       	game.schedule(1, {=> self.mostrarNecesidad()})
+       	//game.schedule(1, {=> self.mostrarNecesidad()})
+       	game.removeTickEvent("carpincho muestra su necesidad")
+       	self.mostrarNecesidad()
      
     }
 
-    method hacerRuidito(){
-    	const sonido = game.sound("sounds/sonidoMorder.wav")
-        return sonido.play()
-    }
+    /*method reproducir(sonidoAReproducir){
+    	const sonido = game.sound("sounds/" ++ sonidoAReproducir)
+        sonido.play()
+    }*/
 }
 
 
