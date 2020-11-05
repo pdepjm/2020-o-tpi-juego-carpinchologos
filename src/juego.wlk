@@ -10,7 +10,7 @@ object juego {
 	
 	const property carpinchos = []
 
-	var carpinchosSalvados = 0
+	var property carpinchosSalvados = 37
 	
 	var property musica = game.sound("sounds/chacarera.mp3") // SETTEAR MUSICA INICIAL
 
