@@ -10,7 +10,7 @@ object juego {
 	
 	const property carpinchos = []
 
-	var property carpinchosSalvados = 37
+	var property carpinchosSalvados = 0
 	
 	var property musica = game.sound("sounds/chacarera.mp3") // SETTEAR MUSICA INICIAL
 
@@ -63,7 +63,7 @@ object juego {
 
 	method generarCarpinchos(){
 		//on tick -> genere un carpincho hasta que el jugador gane o pierda
-		game.onTick(4000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
+		game.onTick(6000, "pop carpincho", {=> self.generarUnCarpinchoYMoverEnLineaRecta()})
 	}
 
 	method generarUnCarpinchoYMoverEnLineaRecta() {
@@ -82,7 +82,7 @@ object juego {
     }
     
     method reproducirMusica() { // Reproduce la musica del juego
-    	musica.volume(0.30)
+    	musica.volume(0.20)
     	musica.play()
     }
     

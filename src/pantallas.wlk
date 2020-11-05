@@ -38,27 +38,25 @@ object pantallas {
         fondo.cambiar("fonditoReporte.png")
         juego.cambiarMusica("missionPassed.mp3") // cambiar el method
         game.addVisual(fondo)
-        self.mostrarPuntaje()
+        self.mostrarCantidadDeCarpinchosSalvados()
         game.schedule(10000, { => game.stop()})
     }
     
-   method mostrarPuntaje(){
-        const puntaje = juego.carpinchosSalvados().toString()
-        if ( juego.carpinchosSalvados() >= 10){
-        const unidadesPuntaje = puntaje.takeRight(1)
+   method mostrarCantidadDeCarpinchosSalvados(){
+   	const puntaje = juego.carpinchosSalvados().toString()
+   	if (juego.carpinchosSalvados() >= 10){
+   		const unidadesPuntaje = puntaje.takeRight(1)
         const decenaPuntaje = puntaje.takeLeft(1)
         const decena = new Numero(imagen = decenaPuntaje + ".png", posicion = game.at(15,9))
         const unidades = new Numero(imagen = unidadesPuntaje + ".png", posicion = game.at(20,9))
         game.addVisual(decena)
         game.addVisual(unidades)
-        }else{
-        const punt = new Numero(imagen = puntaje + ".png", posicion = game.at(20,9))
-        game.addVisual(punt)
-        
+        }
+        else{
+        	const punt = new Numero(imagen = puntaje + ".png", posicion = game.at(20,9))
+        	game.addVisual(punt)
         } 
-        
-
-}
+	}
 }
 
 class Numero{
@@ -70,6 +68,3 @@ class Numero{
     method image() = imagen
 
 }
-
-
-

@@ -12,6 +12,10 @@ class Elemento {
 	method image() = image
 	
 	method position() = position
+	
+	method reproducirSonidoDeAccion() {
+		juego.reproducirSonido("sonidoMorder.mp3")
+	}
 }
 
 object zanahoria inherits Elemento{
@@ -36,6 +40,10 @@ object matienzo inherits Elemento{
 	override method image() = "mate.png"
 	
 	method posicionVisual() = game.at(2, 19)
+	
+	override method reproducirSonidoDeAccion() {
+		juego.reproducirSonido("ruidoDeMate.mp3")
+	}
 }
 
 object birra inherits Elemento{
@@ -44,6 +52,10 @@ object birra inherits Elemento{
 	override method image() = "cerveza.png"
 	
 	method posicionVisual() = game.at(4, 19)
+	
+	override method reproducirSonidoDeAccion() {
+		juego.reproducirSonido("audioBirra.mp3")
+	}
 }
 
 object baguette inherits Elemento{
@@ -52,4 +64,8 @@ object baguette inherits Elemento{
 	override method image() = "baguette.png"
 	
 	method posicionVisual() = game.at(3, 19)
+	
+	override method reproducirSonidoDeAccion() {
+		juego.reproducirSonido("sonidoMorder.mp3")
+	}
 }

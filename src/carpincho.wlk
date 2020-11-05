@@ -12,11 +12,14 @@ class Carpincho {
 	var posicion = game.at(10,10) 
 
 	var property necesidad 
+	
+	var mensaje
 
 	var yaMuto = false
 	
 	constructor () {
 		necesidad = tiposDeNecesidades.dameUnaNecesidadInicial()
+		mensaje = necesidad.mensaje()
 	}
 	
 	method elementoNecesario() = necesidad.objetoNecesario()
@@ -26,7 +29,7 @@ class Carpincho {
 	method image() = imagen
 
 	method avanzarAutomaticamente() {
-		game.onTick(1000, "carpincho avanza", { =>  self.avanzarLineaRecta()})
+		game.onTick(1000, "carpincho avanza", { =>  self.avanzarLineaRecta() })
 	}
 
 	method avanzarLineaRecta() {
@@ -54,12 +57,11 @@ class Carpincho {
 	method interaccionConPersonaje(unPersonaje) {
 		if(self.necesidadSatisfecha(unPersonaje)){
 				const elemento = self.elementoNecesario()
-				self.mutarOMorir()				
+				self.mutarOMorir(elemento)				
 				unPersonaje.quitarElemento(elemento)
 		}
 		else if (unPersonaje.tieneAlgunElemento()) {
 				game.say(self, "No quiero ese elemento!")
-				
 		}
 	}	
 	
@@ -74,26 +76,24 @@ class Carpincho {
 		self.mostrarNecesidad()
 	}
 	
-	method mostrarNecesidad() {
-		const mensaje = necesidad.mensaje()
+	method mostrarNecesidad() { 
 		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, mensaje)})
 	}
 
-	method mutarOMorir(){
+	method mutarOMorir(elemento){
         if(not yaMuto){
-            self.mutar()
+            self.mutar(elemento)
         }else {
+            elemento.reproducirSonidoDeAccion()
             self.desaparecer()
         }
     }
 
-    method mutar(){
-        juego.reproducirSonido("ruidoDeMate.mp3")
+    method mutar(elemento){
+        elemento.reproducirSonidoDeAccion()
         yaMuto = true
 		necesidad = tiposDeNecesidades.dameUnaNecesidadMutada()
+		mensaje = necesidad.mensaje()
        	imagen = necesidad.imagenAsociada()
-       	game.removeTickEvent("carpincho muestra su necesidad")
-       	self.mostrarNecesidad()
-     
     }
 }
