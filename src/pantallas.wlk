@@ -17,6 +17,7 @@ object pantallas {
 	
 	method determinarComportamientoDeTeclaEnter() {
 		if (not teclaEnterUsada) {
+			juego.reproducir("audioRasta.mp3")
 			fondo.cambiar("menu.png")
 			teclaEnterUsada = true
 			keyboard.a().onPressDo({self.determinarSeleccionDePersonaje("alf.png")})
