@@ -1,4 +1,5 @@
 import wollok.game.*
+import juego.*
 
 class Elemento {
 	var image
