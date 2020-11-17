@@ -66,8 +66,10 @@ class Carpincho {
 	}	
 	
 	method interaccionConAgua() {
-		game.clear()
-		pantallas.mostrarReporte()
+		/*game.clear()
+		pantallas.mostrarReporte()*/
+		//juego.cambiarPantallaYEjecutar(pantallaReporte)
+		pantallaJuego.cambiate()
 	}
 
 	method aparecerYMover() {

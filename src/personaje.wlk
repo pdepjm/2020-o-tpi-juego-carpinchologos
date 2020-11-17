@@ -54,8 +54,9 @@ object personaje {
 	
 	method seleccionado(imagenASetear, musica) {
 		imagen = imagenASetear
-		const musicaASettear = game.sound("sounds/" + musica) // ABSTRAER EESTE CACHITO DE CODIGO
-		juego.musica(musicaASettear) // CUANDO INICIALICEMOS LA MUSICA EN ESTE PUNTO TENEMOS QUE USAR EL METODO CAMBIARMUSICA(PARAM)
+		const musicaACambiar = game.sound("sounds/" + musica) // ABSTRAER EESTE CACHITO DE CODIGO
+		juego.musica(musicaACambiar) // CUANDO INICIALICEMOS LA MUSICA EN ESTE PUNTO TENEMOS QUE USAR EL METODO CAMBIARMUSICA(PARAM)
 		juego.reproducirMusica()
+		//juego.cambiarMusica(musicaACambiar) // No se puede detener una musica que nunca se reprodujo
 	}
 }
