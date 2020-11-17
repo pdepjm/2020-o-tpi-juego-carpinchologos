@@ -32,9 +32,9 @@ object personaje {
 	
 	method tieneAlgunElemento() = inventario.hayElementos()
 
-	method interaccionConPersonaje() {
+	/*method interaccionConPersonaje() {
 		// Cuando el personaje interactua consigo mismo. Probar si se puede sacar
-	}
+	}*/
 
 	method interaccionConAgua(){
 		// Vacio para que no rompa WG
