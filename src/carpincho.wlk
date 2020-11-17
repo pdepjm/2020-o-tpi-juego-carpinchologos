@@ -42,11 +42,10 @@ class Carpincho {
 	}
 
 	method desaparecer() {
-		juego.incrementarCarpinchosSalvados()
+		puntaje.sumarUnPunto()
 		game.removeTickEvent("carpincho avanza")
 		game.removeTickEvent("carpincho muestra su necesidad")
         game.removeVisual(self)
-
 	}
 	
 	method necesidadSatisfecha(unPersonaje) {

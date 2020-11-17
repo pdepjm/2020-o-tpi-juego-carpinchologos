@@ -10,24 +10,23 @@ object juego {
 	
 	const property carpinchos = []
 
-	var property carpinchosSalvados = 0
+	//var property carpinchosSalvados = 0
 	
 	var property musica = game.sound("sounds/chacarera.mp3") // SETTEAR MUSICA INICIAL
 
 	var pantalla //= pantallaInicio
 
-	method cambiarPantallaYEjecutar(nuevaPantalla) {
+	method cambiarPantallaYEjecutar(nuevaPantalla) { // Probar si en verdad hace falta o no guardar la pantalla en un atributo
 		pantalla = nuevaPantalla
 		pantalla.ejecutar()
 	}
 
-	method incrementarCarpinchosSalvados() { // Este tendria que ir a pantalla de juego
+	/*method incrementarCarpinchosSalvados() { // Este tendria que ir a pantalla de juego
 		carpinchosSalvados += 1
-	}
+	}*/
 	
     method iniciar(){
     	self.configurarJuego()
-		//pantalla.ejecutar() // era pantallas
 		self.cambiarPantallaYEjecutar(pantallaInicio)
         game.start()
         //self.reproducirMusica()

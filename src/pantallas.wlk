@@ -8,7 +8,7 @@ import objetosQueSatisfacen.*
 /// ------ Refactor para las pantallas ------
 
 class Pantalla {
-	var image = "presentacion.png"
+	var image = "presentacion.png" // Se podria hacer const property image = "imagenQueLeCorresponda.png" en cada objeto, pero sería repetir el método image() y su implementación implíctamente
 	const position = game.at(0,0)
 
 	method image() = image
@@ -46,12 +46,13 @@ object pantallaSeleccionPersonaje inherits Pantalla {
 		keyboard.r().onPressDo({self.determinarSeleccionDePersonajeYCambiarPantalla("rasta.png", "alalalalalong.mp3")})
 	}
 
-	method determinarSeleccionDePersonaje(imagenDePersonaje, musica) {
+	/*method determinarSeleccionDePersonaje(imagenDePersonaje, musica) {
 		personaje.seleccionado(imagenDePersonaje, musica)
-	}
+	}*/
 
-	method determinarSeleccionDePersonajeYCambiarPantalla(imagenDePersonaje, sonido) {
-		self.determinarSeleccionDePersonaje(imagenDePersonaje, sonido)
+	method determinarSeleccionDePersonajeYCambiarPantalla(imagenDePersonaje, musica) {
+		//self.determinarSeleccionDePersonaje(imagenDePersonaje, sonido)
+		personaje.seleccionado(imagenDePersonaje, musica)
 		self.cambiarPantalla(pantallaJuego, "fondo.png")
 	}
 	
@@ -131,10 +132,15 @@ object pantallaReporte inherits Pantalla {
 }
 
 object puntaje{
+	var property puntos = 0
 	
+	method sumarUnPunto(){
+		puntos = puntos + 1 
+	}
+
 	method mostrate() {
-   	const puntaje = juego.carpinchosSalvados().toString() // delegar a juego
-   	if (juego.carpinchosSalvados() >= 10){ // delegar a juego
+   	const puntaje = puntos.toString()
+   	if (puntos >= 10){ 
    		const unidadesPuntaje = puntaje.takeRight(1)
         const decenaPuntaje = puntaje.takeLeft(1)
         const decena = new Numero(imagen = decenaPuntaje + ".png", posicion = game.at(15,9))
