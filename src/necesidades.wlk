@@ -13,14 +13,14 @@ object tiposDeNecesidades {
 object hambrientoDeZanahorias {
 	method mensaje() = "TRAEME ZANAHORIAS"
 	method objetoNecesario() = zanahoria
-	method imagenAsociada() {}
+	method imagenAsociada() = "carpincho.png"
 	//method accion() aca iria la parte de mutar
 }
 
 object hambrientoDeManzana {
 	method mensaje() = "NECESITO UNA MANZANA"
 	method objetoNecesario() = manzana
-	method imagenAsociada() {}
+	method imagenAsociada() = "carpincho.png"
 	//method accion() aca iria la parte de mutar
 }
 

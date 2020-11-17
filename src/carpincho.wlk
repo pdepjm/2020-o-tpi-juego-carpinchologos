@@ -7,26 +7,26 @@ import pantallas.*
 
 class Carpincho {
 
-	var imagen = "carpincho.png"
+	//var imagen = "carpincho.png"
 
 	var posicion = game.at(10,10) 
 
 	var property necesidad 
 	
-	var mensaje
+	//var mensaje
 
 	var yaMuto = false
 	
 	constructor () {
 		necesidad = tiposDeNecesidades.dameUnaNecesidadInicial()
-		mensaje = necesidad.mensaje()
+		//mensaje = necesidad.mensaje()
 	}
 	
-	method elementoNecesario() = necesidad.objetoNecesario()
+	//method elementoNecesario() = necesidad.objetoNecesario()
 	
 	method position() = posicion 
 
-	method image() = imagen
+	method image() = necesidad.imagenAsociada()
 
 	method avanzarAutomaticamente() {
 		game.onTick(1000, "carpincho avanza", { =>  self.avanzarLineaRecta() })
@@ -55,7 +55,7 @@ class Carpincho {
 
 	method interaccionConPersonaje(unPersonaje) {
 		if(self.necesidadSatisfecha(unPersonaje)){
-				const elemento = self.elementoNecesario()
+				const elemento = necesidad.objetoNecesario()
 				self.mutarOMorir(elemento)				
 				unPersonaje.quitarElemento(elemento)
 		}
@@ -78,7 +78,7 @@ class Carpincho {
 	}
 	
 	method mostrarNecesidad() { 															//podemos moverlo a necesidades.wlk para la buena delegacion
-		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, mensaje)}) //necesidad.mensaje()
+		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, necesidad.mensaje())}) //necesidad.mensaje()
 	}
 
 	method mutarOMorir(elemento){
@@ -94,7 +94,7 @@ class Carpincho {
         elemento.reproducirSonidoDeAccion()
         yaMuto = true
 		necesidad = tiposDeNecesidades.dameUnaNecesidadMutada()
-		mensaje = necesidad.mensaje()								//eliminar mensaje, necesidad se encarga del msj
-       	imagen = necesidad.imagenAsociada()							//eliminar imagen,  necesidad se encarga de imagen
+		//mensaje = necesidad.mensaje()								//eliminar mensaje, necesidad se encarga del msj
+       	//imagen = necesidad.imagenAsociada()							//eliminar imagen,  necesidad se encarga de imagen
     }
 }
