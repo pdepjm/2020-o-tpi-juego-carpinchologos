@@ -1,5 +1,6 @@
 import objetosQueSatisfacen.*
 import personaje.*
+import wollok.game.*
 
 object tiposDeNecesidades {
 	const necesidadesIniciales = [hambrientoDeZanahorias, hambrientoDeManzana]
@@ -14,11 +15,6 @@ object tiposDeNecesidades {
 class Necesidad {
 
 	method esSatisfechaPorPersonaje() = personaje.tiene(self.objetoNecesario())
-	/*{
-		const elementos = unPersonaje.elementosAgarrados()		//unPersonaje.contieneElemento(objetoNecesario)
-		return elementos.contains(necesidad.objetoNecesario())
-	}*/
-	
 	method mensaje()
 	method objetoNecesario()
 	method imagenAsociada() = "carpincho.png"
