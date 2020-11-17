@@ -42,10 +42,8 @@ class Agua{
 	method determinarColision() {
 		game.onCollideDo(self, {visualColisionado => visualColisionado.interaccionConAgua()})
 	}
-	method interaccionConAgua() {
-		// Vacio para que no se rompa el polimorfismo 
-	}
-	method interaccionConPersonaje(unPersonaje) {
+	
+	method interaccionConPersonaje() {
 		// Vacio para que no se rompa el polimorfismo 
 	}
 }

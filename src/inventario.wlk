@@ -20,15 +20,11 @@ object inventario{
 		self.crearVisual(unElemento.image(), unElemento.posicionVisual())
 	}
 	
-	
 	method verificarAgarrar(unElemento){
 	  	if(not self.pocosElementos()) 				self.error("Ya tengo muchos elementos!")
 	  	if(self.elementoRepetido(unElemento))	self.error("Ya tengo este elemento!")  
 	}
 	
-	
-	
-
     method removerElemento(unElemento) {
         elementosAgarrados.remove(unElemento)
         self.quitarVisual(unElemento.posicionVisual())
@@ -45,6 +41,8 @@ object inventario{
 	 	visuales.remove(visual)
 	 	game.removeVisual(visual)
 	 }
+
+	 method contiene(elemento) = elementosAgarrados.contains(elemento)
 }
 
 class Visual{
@@ -57,7 +55,7 @@ class Visual{
 	
 	method image() = image
 	
-	method interaccionConPersonaje(unPersonaje) {
+	method interaccionConPersonaje() {
 		// Necesario para que no tire mensaje de error
 	}
 }

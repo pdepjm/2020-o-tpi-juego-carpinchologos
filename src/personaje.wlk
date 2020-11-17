@@ -24,24 +24,18 @@ object personaje {
 		catch excepcion : DomainException {
 			self.advertencia(excepcion.message())
 		}
-
-		
 	}
 	
 	method elementosAgarrados() = inventario.elementosAgarrados()
 	
 	method tieneAlgunElemento() = inventario.hayElementos()
 
-	/*method interaccionConPersonaje() {
-		// Cuando el personaje interactua consigo mismo. Probar si se puede sacar
-	}*/
-
 	method interaccionConAgua(){
 		// Vacio para que no rompa WG
 	}
 
 	method establecerComportamiento() {
-		game.onCollideDo(self, {algo => algo.interaccionConPersonaje(self)})
+		game.onCollideDo(self, {algo => algo.interaccionConPersonaje()})
 	}
 
 	method quitarElemento(unElemento) {
@@ -59,4 +53,6 @@ object personaje {
 		juego.reproducirMusica()
 		//juego.cambiarMusica(musicaACambiar) // No se puede detener una musica que nunca se reprodujo
 	}
+
+	method tiene(elemento) = inventario.contiene(elemento)
 }

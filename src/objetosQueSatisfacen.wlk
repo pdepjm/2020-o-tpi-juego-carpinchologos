@@ -1,12 +1,13 @@
 import wollok.game.*
 import juego.*
+import personaje.*
 
 class Elemento {
 	var image
 	var position
 
-	method interaccionConPersonaje(unPersonaje){
-		unPersonaje.agarrarElemento(self)
+	method interaccionConPersonaje(){
+		personaje.agarrarElemento(self)
 	}	
 	
 	method image() = image

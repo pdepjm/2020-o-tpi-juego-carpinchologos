@@ -1,4 +1,5 @@
 import objetosQueSatisfacen.*
+import personaje.*
 
 object tiposDeNecesidades {
 	const necesidadesIniciales = [hambrientoDeZanahorias, hambrientoDeManzana]
@@ -10,37 +11,48 @@ object tiposDeNecesidades {
 	method dameUnaNecesidadMutada() = necesidadesMutadas.anyOne()
 }
 
-object hambrientoDeZanahorias {
-	method mensaje() = "TRAEME ZANAHORIAS"
-	method objetoNecesario() = zanahoria
+class Necesidad {
+
+	method esSatisfechaPorPersonaje() = personaje.tiene(self.objetoNecesario())
+	/*{
+		const elementos = unPersonaje.elementosAgarrados()		//unPersonaje.contieneElemento(objetoNecesario)
+		return elementos.contains(necesidad.objetoNecesario())
+	}*/
+	
+	method mensaje()
+	method objetoNecesario()
 	method imagenAsociada() = "carpincho.png"
+}
+
+object hambrientoDeZanahorias inherits Necesidad {
+	override method mensaje() = "TRAEME ZANAHORIAS"
+	override method objetoNecesario() = zanahoria
 	//method accion() aca iria la parte de mutar
 }
 
-object hambrientoDeManzana {
-	method mensaje() = "NECESITO UNA MANZANA"
-	method objetoNecesario() = manzana
-	method imagenAsociada() = "carpincho.png"
+object hambrientoDeManzana inherits Necesidad {
+	override method mensaje() = "NECESITO UNA MANZANA"
+	override method objetoNecesario() = manzana
 	//method accion() aca iria la parte de mutar
 }
 
-object argentino { 
-	method mensaje() = "QUE GANAS DE UN MATTIOLI REEEY!"
-	method objetoNecesario() = matienzo
-	method imagenAsociada() = "carpinArgento.png"
-	//method accion() aca muere
+object argentino inherits Necesidad { 
+	override method mensaje() = "QUE GANAS DE UN MATTIOLI REEEY!"
+	override method objetoNecesario() = matienzo
+	override method imagenAsociada() = "carpinArgento.png"
+	//override method accion() aca muere
 }
 
-object irlandes { 
-	method mensaje() = "ALCANZAME UNA BIRRITA"
-	method objetoNecesario() = birra
-	method imagenAsociada() = "carpinIrlandes.png"
-	//method accion() aca muere
+object irlandes inherits Necesidad { 
+	override method mensaje() = "ALCANZAME UNA BIRRITA"
+	override method objetoNecesario() = birra
+	override method imagenAsociada() = "carpinIrlandes.png"
+	//override method accion() aca muere
 }
 
-object frances { 
-	method mensaje() = "ME TRAES UN BAGUETTE CALENTITO?"
-	method objetoNecesario() = baguette
-	method imagenAsociada() = "carpinUlala.png"
+object frances inherits Necesidad { 
+	override method mensaje() = "ME TRAES UN BAGUETTE CALENTITO?"
+	override method objetoNecesario() = baguette
+	override method imagenAsociada() = "carpinUlala.png"
 	//method accion() aca muere
 }
