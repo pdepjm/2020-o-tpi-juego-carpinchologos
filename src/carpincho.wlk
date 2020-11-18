@@ -12,8 +12,6 @@ class Carpincho {
 
 	var property necesidad 
 	
-	var yaMuto = false
-	
 	constructor () {
 		necesidad = tiposDeNecesidades.dameUnaNecesidadInicial()
 	}
@@ -43,10 +41,8 @@ class Carpincho {
 	}
 
 	method interaccionConPersonaje() {
-		if(necesidad.esSatisfechaPorPersonaje()){           
-				const elemento = necesidad.objetoNecesario()	
-				self.mutarOMorir(elemento)				
-				personaje.quitarElemento(elemento)
+		if(necesidad.esSatisfechaPorPersonaje()){
+				necesidad.efecto(self)
 		}
 		else if (personaje.tieneAlgunElemento()) {
 				game.say(self, "No quiero ese elemento!")
@@ -54,9 +50,6 @@ class Carpincho {
 	}	
 	
 	method interaccionConAgua() {
-		/*game.clear()
-		pantallas.mostrarReporte()*/
-		//juego.cambiarPantallaYEjecutar(pantallaReporte)
 		pantallaJuego.cambiate()
 	}
 
@@ -69,19 +62,4 @@ class Carpincho {
 	method mostrarNecesidad() { 															
 		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, necesidad.mensaje())})
 	}
-
-	method mutarOMorir(elemento){
-        if(not yaMuto){
-            self.mutar(elemento)
-        }else {
-            elemento.reproducirSonidoDeAccion()
-            self.desaparecer()
-        }
-    }
-
-    method mutar(elemento){
-        elemento.reproducirSonidoDeAccion()
-        yaMuto = true
-		necesidad = tiposDeNecesidades.dameUnaNecesidadMutada()
-    }
 }

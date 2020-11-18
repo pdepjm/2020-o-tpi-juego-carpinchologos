@@ -16,38 +16,60 @@ class Necesidad {
 	method esSatisfechaPorPersonaje() = personaje.tiene(self.objetoNecesario())
 	method mensaje()
 	method objetoNecesario()
-	method imagenAsociada() = "carpincho.png"
+	method imagenAsociada()
+	
+	method efecto(unCarpincho){
+		self.objetoNecesario().reproducirSonidoDeAccion()
+		personaje.quitarElemento(self.objetoNecesario())
+	}
 }
 
-object hambrientoDeZanahorias inherits Necesidad {
+class NecesidadBasica inherits Necesidad{
+	override method imagenAsociada() = "carpincho.png"
+	
+	override method efecto(unCarpincho) {
+		super(unCarpincho)
+		const necesidadMutada = tiposDeNecesidades.dameUnaNecesidadMutada()
+		unCarpincho.necesidad(necesidadMutada)
+	}
+}
+
+object hambrientoDeZanahorias inherits NecesidadBasica {
 	override method mensaje() = "TRAEME ZANAHORIAS"
 	override method objetoNecesario() = zanahoria
-	//method accion() aca iria la parte de mutar
 }
 
-object hambrientoDeManzana inherits Necesidad {
+object hambrientoDeManzana inherits NecesidadBasica {
 	override method mensaje() = "NECESITO UNA MANZANA"
 	override method objetoNecesario() = manzana
-	//method accion() aca iria la parte de mutar
+	
 }
 
-object argentino inherits Necesidad { 
+class NecesidadMutada inherits Necesidad {
+
+ 	override method efecto(unCarpincho) {
+		super(unCarpincho)
+		unCarpincho.desaparecer()
+	 }
+}
+
+object argentino inherits NecesidadMutada { 
 	override method mensaje() = "QUE GANAS DE UN MATTIOLI REEEY!"
 	override method objetoNecesario() = matienzo
 	override method imagenAsociada() = "carpinArgento.png"
-	//override method accion() aca muere
+
 }
 
-object irlandes inherits Necesidad { 
+object irlandes inherits NecesidadMutada { 
 	override method mensaje() = "ALCANZAME UNA BIRRITA"
 	override method objetoNecesario() = birra
 	override method imagenAsociada() = "carpinIrlandes.png"
-	//override method accion() aca muere
+	
 }
 
-object frances inherits Necesidad { 
+object frances inherits NecesidadMutada { 
 	override method mensaje() = "ME TRAES UN BAGUETTE CALENTITO?"
 	override method objetoNecesario() = baguette
 	override method imagenAsociada() = "carpinUlala.png"
-	//method accion() aca muere
+
 }
