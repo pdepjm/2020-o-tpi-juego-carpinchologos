@@ -4,6 +4,7 @@ import juego.*
 import personaje.*
 import necesidades.*
 import pantallas.*
+import puntaje.*
 
 class Carpincho {
 

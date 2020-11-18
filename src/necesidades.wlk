@@ -1,6 +1,5 @@
 import objetosQueSatisfacen.*
 import personaje.*
-import wollok.game.*
 
 object tiposDeNecesidades {
 	const necesidadesIniciales = [hambrientoDeZanahorias, hambrientoDeManzana]
