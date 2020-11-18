@@ -8,6 +8,7 @@ import inventario.*
 describe "Funcionamiento del inventario"{
 	
 	fixture {
+		game.clear()
 		game.addVisual(personaje)
 	}
 	
