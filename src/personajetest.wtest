@@ -34,7 +34,7 @@ describe "Funcionamiento del inventario"{
 		game.addVisual(carpincho)
 		carpincho.necesidad(hambrientoDeManzana)
 		const elementosIniciales = inventario.elementosAgarrados()
-		carpincho.interaccionConPersonaje(personaje)
+		carpincho.interaccionConPersonaje()
 		const elementosFinales = inventario.elementosAgarrados()
 		assert.equals(elementosFinales, elementosIniciales)
 	}

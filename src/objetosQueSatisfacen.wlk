@@ -49,7 +49,7 @@ object matienzo inherits Elemento{
 
 object birra inherits Elemento{
 	override method position() = game.at(19,1)
-	//cambiar la foto!!
+	
 	override method image() = "cerveza.png"
 	
 	method posicionVisual() = game.at(4, 19)

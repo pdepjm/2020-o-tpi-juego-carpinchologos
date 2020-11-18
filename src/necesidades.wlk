@@ -6,7 +6,7 @@ import wollok.game.*
 object tiposDeNecesidades {
 	const necesidadesIniciales = [hambrientoDeZanahorias, hambrientoDeManzana]
 
-	const necesidadesMutadas = [argentino, irlandes, frances]
+	const property necesidadesMutadas = [argentino, irlandes, frances]
 	
 	method dameUnaNecesidadInicial() = necesidadesIniciales.anyOne()
 
