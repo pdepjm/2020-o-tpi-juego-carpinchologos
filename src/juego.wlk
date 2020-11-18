@@ -46,6 +46,7 @@ object juego {
     
     method reproducirMusica() { // Reproduce la musica del juego
     	musica.volume(0.20)
+		musica.shouldLoop(true)
     	musica.play()
     }
     
