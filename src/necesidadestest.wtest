@@ -1,0 +1,20 @@
+import necesidades.*
+import objetosQueSatisfacen.*
+import personaje.*
+import inventario.*
+
+
+
+describe "Funcionamiento de la necesidades"{
+	
+	test "El personaje satisface una necesidad si tiene el elemento necesario para hacerlo" {
+		personaje.agarrarElemento(zanahoria)
+		assert.that(hambrientoDeZanahorias.esSatisfechaPorPersonaje())
+	}
+
+	test "El personaje NO satisface una necesidad si no tiene el elemento necesario para ello" {
+		personaje.agarrarElemento(manzana)
+		personaje.agarrarElemento(matienzo)
+		assert.notThat(hambrientoDeZanahorias.esSatisfechaPorPersonaje())
+	}
+}
