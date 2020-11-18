@@ -17,6 +17,10 @@ class Elemento {
 	method reproducirSonidoDeAccion() {
 		juego.reproducirSonido("sonidoMorder.mp3")
 	}
+
+	method posicionVisual()
+
+	method tienePosicionVisual(unaPosicion) = self.posicionVisual() == unaPosicion
 }
 
 object zanahoria inherits Elemento{
@@ -24,7 +28,7 @@ object zanahoria inherits Elemento{
 
 	override method image() = "zanahoria.png"
 
-	method posicionVisual() = game.at(0, 19)
+	override method posicionVisual() = game.at(0, 19)
 }
 
 object manzana inherits Elemento {
@@ -32,7 +36,7 @@ object manzana inherits Elemento {
 
 	override method image() = "manzana.png"
 
-	method posicionVisual() = game.at(1, 19)
+	override method posicionVisual() = game.at(1, 19)
 }
 
 object matienzo inherits Elemento{
@@ -40,7 +44,7 @@ object matienzo inherits Elemento{
 	
 	override method image() = "mate.png"
 	
-	method posicionVisual() = game.at(2, 19)
+	override method posicionVisual() = game.at(2, 19)
 	
 	override method reproducirSonidoDeAccion() {
 		juego.reproducirSonido("ruidoDeMate.mp3")
@@ -49,10 +53,10 @@ object matienzo inherits Elemento{
 
 object birra inherits Elemento{
 	override method position() = game.at(19,1)
-	
+
 	override method image() = "cerveza.png"
 	
-	method posicionVisual() = game.at(4, 19)
+	override method posicionVisual() = game.at(4, 19)
 	
 	override method reproducirSonidoDeAccion() {
 		juego.reproducirSonido("audioBirra.mp3")
@@ -64,7 +68,7 @@ object baguette inherits Elemento{
 	
 	override method image() = "baguette.png"
 	
-	method posicionVisual() = game.at(3, 19)
+	override method posicionVisual() = game.at(3, 19)
 	
 	override method reproducirSonidoDeAccion() {
 		juego.reproducirSonido("sonidoMorder.mp3")

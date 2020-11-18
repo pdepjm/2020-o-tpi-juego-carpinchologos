@@ -27,7 +27,7 @@ object inventario{
 	
     method removerElemento(unElemento) {
         elementosAgarrados.remove(unElemento)
-        self.quitarVisual(unElemento.posicionVisual())
+        self.quitarVisual(unElemento)
     }
 
     method crearVisual(imagen, posicion) {
@@ -36,8 +36,8 @@ object inventario{
 		game.addVisual(visual)
 	 }
      
-	 method quitarVisual(posicion){
-	 	const visual = visuales.find({visual => visual.position() == posicion})
+	 method quitarVisual(elemento){
+	 	const visual = visuales.find({ visual => visual.correspondienteA(elemento)})			//visuales.find({visual => visual.position() == posicion}) 
 	 	visuales.remove(visual)
 	 	game.removeVisual(visual)
 	 }
@@ -58,5 +58,7 @@ class Visual{
 	method interaccionConPersonaje() {
 		// Necesario para que no tire mensaje de error
 	}
+
+	method correspondienteA(unElemento) = unElemento.tienePosicionVisual(posicion)
 }
 
