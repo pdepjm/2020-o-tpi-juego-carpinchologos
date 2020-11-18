@@ -1,5 +1,7 @@
 import objetosQueSatisfacen.*
 import personaje.*
+import carpincho.*
+import wollok.game.*
 
 object tiposDeNecesidades {
 	const necesidadesIniciales = [hambrientoDeZanahorias, hambrientoDeManzana]
@@ -21,6 +23,10 @@ class Necesidad {
 	method efecto(unCarpincho){
 		self.objetoNecesario().reproducirSonidoDeAccion()
 		personaje.quitarElemento(self.objetoNecesario())
+	}
+
+	method mostrarse(unCarpincho) {
+		game.say(unCarpincho,self.mensaje())		
 	}
 }
 

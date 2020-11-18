@@ -60,6 +60,6 @@ class Carpincho {
 	}
 	
 	method mostrarNecesidad() { 															
-		game.onTick(3000, "carpincho muestra su necesidad", { =>  game.say(self, necesidad.mensaje())})
+		game.onTick(3000, "carpincho muestra su necesidad", { => necesidad.mostrarse(self)})
 	}
 }
