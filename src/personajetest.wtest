@@ -23,11 +23,20 @@ describe "Funcionamiento del inventario"{
 		personaje.agarrarElemento(zanahoria)
 		assert.equals(#{zanahoria}, personaje.elementosAgarrados())
 	}
+	test "No se pueden agarrar mas de una vez el mismo elemento lanza un mensaje"{
+		personaje.agarrarElemento(zanahoria)
+		assert.throwsExceptionWithMessage("Ya tengo este elemento!", {inventario.agregarElemento(zanahoria)})
+	}
 	test "No se pueden agregar muchos elementos al inventario"{
 		personaje.agarrarElemento(zanahoria)
 		personaje.agarrarElemento(manzana)
 		personaje.agarrarElemento(manzana)
 		assert.equals(#{zanahoria, manzana}, personaje.elementosAgarrados())
+	}
+	test "No se pueden agregar muchos elementos al inventario lanza un mensaje"{
+		personaje.agarrarElemento(zanahoria)
+		personaje.agarrarElemento(manzana)
+		assert.throwsExceptionWithMessage("Ya tengo este elemento!", {inventario.agregarElemento(manzana)})
 	}
 	test "El personaje le da al carpincho un elemento que no necesita, el inventario no se modifica"{
 		personaje.agarrarElemento(zanahoria)
