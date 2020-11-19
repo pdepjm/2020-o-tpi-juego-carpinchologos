@@ -1,0 +1,24 @@
+import carpincho.*
+import juego.*
+import wollok.game.*
+import personaje.*
+import objetosQueSatisfacen.*
+import necesidades.*
+
+describe "Acciones del carpincho"{
+	
+	test "Carpincho muta cuando el personaje le entrega el primer elemento" {
+		game.addVisual(personaje)
+		personaje.agarrarElemento(manzana)
+		const carpincho = new Carpincho()
+		game.addVisual(carpincho)
+		carpincho.necesidad(hambrientoDeManzana)
+		const necesidadInicial = carpincho.necesidad()
+		//necesidadInicial.efecto(carpincho)     necesitamos reproducir el efecto sin usar funciones de game
+		personaje.quitarElemento(necesidadInicial.objetoNecesario())
+		const necesidadMutada = tiposDeNecesidades.dameUnaNecesidadMutada()
+		carpincho.necesidad(necesidadMutada)
+		const necesidadFinal = carpincho.necesidad()
+		assert.that(tiposDeNecesidades.necesidadesMutadas().contains(necesidadFinal))
+	}
+}
